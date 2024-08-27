@@ -49,17 +49,6 @@ class HomeFragment : Fragment() {
 
         binding.gridView.numColumns = 2
 
-        binding.gridView.setOnItemClickListener { parent, view, position, id ->
-            val selectedItem = gridItems[position]
-            val intent = Intent(activity, AddressDetailActivity::class.java)
-            intent.putExtra("id", selectedItem.id)
-            intent.putExtra("ITEM_NAME", selectedItem.name)
-            intent.putExtra("ITEM_PRICE", selectedItem.price)
-            intent.putExtra("ITEM_IMAGE", selectedItem.image)
-            intent.putExtra("ITEM_WEIGHT", selectedItem.measurement + selectedItem.unit)
-            startActivity(intent)
-        }
-
         loadProductList()
 
         return binding.root
@@ -76,11 +65,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun buildProfileParams(): HashMap<String, String> {
-        return hashMapOf(
-//            Constant.USER_ID to session.getData(Constant.USER_ID),
-//            Constant.OFFSET to offset.toString(),
-//            Constant.LIMIT to limit.toString(),
-        )
+        return hashMapOf()
     }
 
     private fun handleProfileResponse(result: Boolean, response: String) {

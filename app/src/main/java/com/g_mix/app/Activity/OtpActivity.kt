@@ -40,10 +40,6 @@ class OtpActivity : BaseActivity() {
 
         startCountdown()
 
-        binding.ivBack.setOnClickListener {
-            finish()  // This will close the current activity and go back to the previous one
-        }
-
         binding.btnVerifyOTP.setOnClickListener {
 
             if (binding.otpview.getOTP().length == 6) {

@@ -1,13 +1,16 @@
 package com.g_mix.app.Adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import com.bumptech.glide.Glide
+import com.g_mix.app.Activity.AddressDetailActivity
 import com.g_mix.app.Model.HomeProduct
 import com.g_mix.app.R
 
@@ -51,6 +54,17 @@ class HomeAdapter(private val context: Context, private val items: List<HomeProd
             .placeholder(R.drawable.demo_image)
             .into(viewHolder.image)
 
+        viewHolder.btnBuy.setOnClickListener {
+            val intent = Intent(context, AddressDetailActivity::class.java).apply {
+                putExtra("id", product.id)
+                putExtra("ITEM_NAME", product.name)
+                putExtra("ITEM_PRICE", product.price)
+                putExtra("ITEM_IMAGE", product.image)
+                putExtra("ITEM_WEIGHT", product.measurement + " " + product.unit)
+            }
+            context.startActivity(intent)
+        }
+
         return view
     }
 
@@ -59,6 +73,7 @@ class HomeAdapter(private val context: Context, private val items: List<HomeProd
         val price: TextView = view.findViewById(R.id.tvPrice)
         val weight: TextView = view.findViewById(R.id.tvKilogram)
         val image: ImageView = view.findViewById(R.id.ivItemImage)
+        val btnBuy: LinearLayout = view.findViewById(R.id.btnBuy)
     }
 
     companion object

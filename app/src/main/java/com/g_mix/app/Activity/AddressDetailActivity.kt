@@ -45,6 +45,10 @@ class AddressDetailActivity : BaseActivity() {
         var itemImage = intent.getStringExtra("ITEM_IMAGE")
         var itemWeight = intent.getStringExtra("ITEM_WEIGHT")
 
+        binding.ivBack.setOnClickListener {
+            onBackPressed()
+        }
+
 
         // Find views and set data
         findViewById<TextView>(R.id.tvItemName).text = itemName
@@ -141,7 +145,6 @@ class AddressDetailActivity : BaseActivity() {
                     intent.putExtra("ITEM_IMAGE", itemImage)
                     intent.putExtra("ITEM_WEIGHT", itemWeight)
                     startActivity(intent)
-                    finish()
                 } else {
                     Toast.makeText(activity, jsonObject.getString("message"), Toast.LENGTH_SHORT).show()
                 }

@@ -49,6 +49,10 @@ class PaymentActivity : BaseActivity() {
             .error(R.drawable.demo_image)
             .into(findViewById(R.id.ivItemImage))
 
+        binding.ivBack.setOnClickListener {
+            onBackPressed()
+        }
+
         binding.btnConfirm.setOnClickListener {
             placeOrder(
                 id ?: "",

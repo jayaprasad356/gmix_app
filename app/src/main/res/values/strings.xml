@@ -1,0 +1,61 @@
+<resources>
+    <string name="app_name">G mix</string>
+
+    <string name="splash1">"Welcome to our travel community, where every journey begins with a new friendship"</string>
+    <string name="splash2">"Where wanderlust meets companionship - find your perfect travel partner today!"</string>
+    <string name="splash3">"Join a global network of explorers and find your ideal travel buddy."</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="terms_and_conditions">By continuing you agree to our \n<u>Terms of Service Privacy Policy \nContent Policy</u></string>
+    <string name="id_verification_description">An ID verification helps us check that you are a real person and you are really you. It also helps us keep secure and trustworthy. How does it work?\n\nFirst you will add a picture of yourself and provide a clear picture of your ID. We will then quickly match both the pictures.</string>
+    <string name="more"><u>more...</u></string>
+    <string name="less"><u>less...</u></string>
+    <string name="default_web_client_id">789941112934-hh4j9ueivjq4uei4e2k3g3414qvmhnod.apps.googleusercontent.com</string>
+    <string name="back">Back</string>
+    <string name="look_straight_to_the_camera">Look straight to the Camera</string>
+    <string name="click_here_to_upload"><u>Click here to upload payment screenshot</u></string>
+    <string name="screenshot_uploaded"><u>Screenshot uploaded</u></string>
+
+    <string name="admob_app_id">ca-app-pub-8693482193769963~4468032819</string>
+    <string name="shafeeka">Shafeeka</string>
+    <string name="type_a_message">Type a message ...</string>
+    <string name="txtdioglog">Users safety is our top priority. \nTo create a secure environment for female users\n\nMale users are required to complete ID verification before they can chat with female users.\n\nThis process helps us ensure that all male users are genuine, making your experience safer and more enjoyable.</string>
+    <string name="pay_above_upi_i_d_and_upload_screenshot">Pay above UPI I\'d and upload screenshot</string>
+    <string name="abc_juice_powder">ABC Juice Powder</string>
+    <string name="_123_00">₹123.00</string>
+    <string name="_80_gram">80 Gram</string>
+    <string name="buy_now">Buy Now</string>
+    <string name="order_id_90897">Order id #90897</string>
+    <string name="placed_on_octobar_19_2021">Placed on Octobar 19 2021</string>
+    <string name="product_name_abc_juice_powder">Product name: ABC Juice Powder</string>
+    <string name="quantity">Quantity:</string>
+    <string name="price">Price:</string>
+    <string name="order_placed">Order Placed</string>
+    <string name="aug_29_2021">Aug 29 2021</string>
+    <string name="mobile_number">Mobile Number</string>
+    <string name="please_enter_your_mobile_number_for_verification">Please enter your mobile number for verification</string>
+    <string name="enter_mobile_number">Enter Mobile Number</string>
+    <string name="send_otp">Send OTP</string>
+    <string name="fill_address">Fill Address</string>
+    <string name="name">Name</string>
+    <string name="city">City</string>
+    <string name="pin_code">Pin code</string>
+    <string name="landmark_optional">Landmark (optional)</string>
+    <string name="street_name">Street name</string>
+    <string name="door_number">Door number</string>
+    <string name="phone_number">Phone number</string>
+    <string name="add_address">Add address</string>
+    <string name="pre_paid">Pre Paid</string>
+    <string name="pay_using_your_upi_payment_gpay_phonepe_paytm">Pay using your Upi payment Gpay, Phonepe, Paytm.</string>
+    <string name="partial_cash_on_delivery">Partial Cash on delivery</string>
+    <string name="partial_cash_on_delivery_allows_customers_to_pay_a_portion_online_and_the_rest_in_cash_upon_delivery">Partial Cash on Delivery allows customers to pay a portion online and the rest in cash upon delivery.</string>
+    <string name="price_details">Price Details</string>
+    <string name="address">Address</string>
+    <string name="payment">Payment</string>
+    <string name="delivery_charges">Delivery Charges</string>
+    <string name="total">Total</string>
+    <string name="confirm_order">Confirm Order</string>
+    <string name="alternate_phone_number">Alternate phone number</string>
+
+
+</resources>

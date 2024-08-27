@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <RelativeLayout
+        android:padding="@dimen/_10sdp"
+        android:id="@+id/rltoolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/ivProfile"
+            android:layout_width="@dimen/_80sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:background="@drawable/logo"
+            />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/btnRoundBack"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:background="@drawable/round_back"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            />
+
+
+<!--        <de.hdodenhof.circleimageview.CircleImageView-->
+<!--            android:id="@+id/civProfile"-->
+<!--            android:layout_width="@dimen/_38sdp"-->
+<!--            android:layout_height="@dimen/_38sdp"-->
+<!--            android:layout_alignParentEnd="true"-->
+<!--            app:civ_border_width="2dp"-->
+<!--            app:civ_border_color="@color/primary"-->
+<!--            android:layout_centerVertical="true"-->
+<!--            />-->
+
+    </RelativeLayout>
+
+    <FrameLayout
+        android:layout_below="@+id/rltoolbar"
+        android:layout_above="@+id/bottomNavigationView"
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/titleBG"/>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:paddingVertical="@dimen/_5sdp"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_menu"
+        app:menu="@menu/bottom_navigation_menu"
+        app:itemIconTint="@drawable/bottom_navigation_item_selector"
+        app:itemTextColor="@drawable/bottom_navigation_item_selector"
+        android:elevation="0dp"
+        app:elevation="0dp" />
+
+</RelativeLayout>

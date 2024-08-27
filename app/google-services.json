@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "155726097282",
+    "project_id": "gmart-8497c",
+    "storage_bucket": "gmart-8497c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:155726097282:android:f1aea5b8e0e2301fb43d9b",
+        "android_client_info": {
+          "package_name": "com.g_mix.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD3kEIpqXw6XoUOSbDGZJac8sAUdRv6dbs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

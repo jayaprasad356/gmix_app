@@ -1,0 +1,557 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/rlToolbar"
+        android:padding="@dimen/_20sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageButton
+            android:backgroundTint="?attr/iconColor"
+            android:layout_centerVertical="true"
+            android:id="@+id/ivBack"
+            android:layout_width="@dimen/_18sdp"
+            android:layout_height="@dimen/_18sdp"
+            android:background="@drawable/arrow_left"
+            />
+
+        <TextView
+            android:visibility="gone"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/_14sdp"
+            android:layout_toRightOf="@+id/ivBack"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Customer Support"
+            android:textSize="@dimen/_14sdp"
+            android:textColor="?attr/myTextColor"
+            android:fontFamily="@font/poppins_medium"
+            />
+
+
+    </RelativeLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_below="@+id/rlToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?attr/titleBG">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardUseCompatPadding="true"
+            android:layout_margin="@dimen/_5sdp"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            app:cardCornerRadius="@dimen/_3sdp">
+
+        <RelativeLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_5sdp">
+
+            <RelativeLayout
+                android:id="@+id/lytImgThumb"
+                android:layout_width="@dimen/_80sdp"
+                android:layout_height="@dimen/_80sdp"
+                android:layout_margin="@dimen/_5sdp">
+
+                <ImageView
+                    android:id="@+id/ivItemImage"
+                    android:layout_width="@dimen/_80sdp"
+                    android:layout_height="@dimen/_80sdp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/demo_image"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/lytPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/lytImgThumb"
+                android:layout_margin="@dimen/_5sdp">
+
+                <RelativeLayout
+                    android:id="@+id/priceLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <RelativeLayout
+                        android:id="@+id/tvHeading"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true">
+
+                        <TextView
+                            android:id="@+id/tvItemName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/abc_juice_powder"
+                            android:textSize="@dimen/_14sdp"
+                            android:textColor="?attr/myTextColor"
+                            android:fontFamily="@font/poppins_medium"/>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/tvWeight"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tvHeading">
+
+                        <TextView
+                            android:id="@+id/tvItemWeight"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/_80_gram"
+                            android:textSize="@dimen/_10sdp"
+                            android:textColor="?attr/textgrey"
+                            android:fontFamily="@font/poppins_medium"/>
+
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_3sdp"
+                        android:layout_marginBottom="@dimen/_3sdp"
+                        android:baselineAligned="false"
+                        android:orientation="horizontal"
+                        android:weightSum="2"
+                        android:layout_below="@+id/tvWeight">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/quantity"
+                            android:textSize="@dimen/_10sdp"
+                            android:textColor="?attr/textgrey"
+                            android:fontFamily="@font/poppins_medium"/>
+
+                        <TextView
+                            android:id="@+id/tvQuantityVal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="10"
+                            android:textSize="@dimen/_12sdp"
+                            android:layout_marginStart="@dimen/_5sdp"
+                            android:textColor="?attr/myTextColor"
+                            android:fontFamily="@font/poppins_bold"/>
+
+                    </LinearLayout>
+                </RelativeLayout>
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/fill_address"
+                android:textSize="@dimen/_14sdp"
+                android:layout_margin="@dimen/_5sdp"
+                android:textColor="?attr/myTextColor"
+                android:fontFamily="@font/poppins_medium"/>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardUseCompatPadding="true"
+            android:layout_marginHorizontal="@dimen/_5sdp"
+            android:layout_marginVertical="@dimen/_3sdp"
+            app:cardCornerRadius="@dimen/_3sdp">
+
+        <RelativeLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/_10sdp"
+            android:layout_gravity="start"
+            android:gravity="start">
+
+            <ImageView
+                android:layout_centerVertical="true"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:scaleType="centerInside"
+                android:src="@drawable/account_ic"/>
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etName"
+                android:layout_width="match_parent"
+                android:layout_marginStart="@dimen/_35sdp"
+                android:layout_marginVertical="@dimen/_10sdp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_regular"
+                android:textSize="@dimen/_12sdp"
+                android:background="@android:color/transparent"
+                android:minLines="1"
+                android:hint="@string/name"/>
+
+
+        </RelativeLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardUseCompatPadding="true"
+            android:layout_marginHorizontal="@dimen/_5sdp"
+            android:layout_marginVertical="@dimen/_3sdp"
+            app:cardCornerRadius="@dimen/_3sdp">
+
+        <RelativeLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/_10sdp"
+            android:layout_gravity="start"
+            android:gravity="start">
+
+            <ImageView
+                android:layout_centerVertical="true"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:scaleType="centerInside"
+                android:src="@drawable/phone_ic"/>
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etMobileNumber"
+                android:layout_width="match_parent"
+                android:layout_marginStart="@dimen/_35sdp"
+                android:layout_marginVertical="@dimen/_10sdp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_regular"
+                android:textSize="@dimen/_12sdp"
+                android:background="@android:color/transparent"
+                android:inputType="phone"
+                android:maxLength="10"
+                android:hint="@string/phone_number"/>
+
+
+        </RelativeLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardUseCompatPadding="true"
+            android:layout_marginHorizontal="@dimen/_5sdp"
+            android:layout_marginVertical="@dimen/_3sdp"
+            app:cardCornerRadius="@dimen/_3sdp">
+
+        <RelativeLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/_10sdp"
+            android:layout_gravity="start"
+            android:gravity="start">
+
+            <ImageView
+                android:layout_centerVertical="true"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:scaleType="centerInside"
+                android:src="@drawable/phone_ic"/>
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etAlternateMobile"
+                android:layout_width="match_parent"
+                android:layout_marginStart="@dimen/_35sdp"
+                android:layout_marginVertical="@dimen/_10sdp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_regular"
+                android:textSize="@dimen/_12sdp"
+                android:background="@android:color/transparent"
+                android:inputType="phone"
+                android:maxLength="10"
+                android:hint="@string/alternate_phone_number"/>
+
+
+        </RelativeLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardUseCompatPadding="true"
+            android:layout_marginHorizontal="@dimen/_5sdp"
+            android:layout_marginVertical="@dimen/_3sdp"
+            app:cardCornerRadius="@dimen/_3sdp">
+
+        <RelativeLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/_10sdp"
+            android:layout_gravity="start"
+            android:gravity="start">
+
+            <ImageView
+                android:layout_centerVertical="true"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:scaleType="centerInside"
+                android:src="@drawable/home_ic"/>
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etDoorNumber"
+                android:layout_width="match_parent"
+                android:layout_marginStart="@dimen/_35sdp"
+                android:layout_marginVertical="@dimen/_10sdp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_regular"
+                android:textSize="@dimen/_12sdp"
+                android:background="@android:color/transparent"
+                android:minLines="1"
+                android:hint="@string/door_number"/>
+
+
+        </RelativeLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardUseCompatPadding="true"
+            android:layout_marginHorizontal="@dimen/_5sdp"
+            android:layout_marginVertical="@dimen/_3sdp"
+            app:cardCornerRadius="@dimen/_3sdp">
+
+        <RelativeLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/_10sdp"
+            android:layout_gravity="start"
+            android:gravity="start">
+
+            <ImageView
+                android:layout_centerVertical="true"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:scaleType="centerInside"
+                android:src="@drawable/street_ic"/>
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etStreet"
+                android:layout_width="match_parent"
+                android:layout_marginStart="@dimen/_35sdp"
+                android:layout_marginVertical="@dimen/_10sdp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_regular"
+                android:textSize="@dimen/_12sdp"
+                android:background="@android:color/transparent"
+                android:hint="@string/street_name"/>
+
+
+        </RelativeLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardUseCompatPadding="true"
+            android:layout_marginHorizontal="@dimen/_5sdp"
+            android:layout_marginVertical="@dimen/_3sdp"
+            app:cardCornerRadius="@dimen/_3sdp">
+
+        <RelativeLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/_10sdp"
+            android:layout_gravity="start"
+            android:gravity="start">
+
+            <ImageView
+                android:layout_centerVertical="true"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:scaleType="centerInside"
+                android:src="@drawable/bank_ic"/>
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etLandmark"
+                android:layout_width="match_parent"
+                android:layout_marginStart="@dimen/_35sdp"
+                android:layout_marginVertical="@dimen/_10sdp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_regular"
+                android:textSize="@dimen/_12sdp"
+                android:background="@android:color/transparent"
+                android:hint="@string/landmark_optional"/>
+
+
+        </RelativeLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardUseCompatPadding="true"
+            android:layout_marginHorizontal="@dimen/_5sdp"
+            android:layout_marginVertical="@dimen/_3sdp"
+            app:cardCornerRadius="@dimen/_3sdp">
+
+        <RelativeLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/_10sdp"
+            android:layout_gravity="start"
+            android:gravity="start">
+
+            <ImageView
+                android:layout_centerVertical="true"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:scaleType="centerInside"
+                android:src="@drawable/pincode_ic"/>
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etPincode"
+                android:layout_width="match_parent"
+                android:layout_marginStart="@dimen/_35sdp"
+                android:layout_marginVertical="@dimen/_10sdp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_regular"
+                android:textSize="@dimen/_12sdp"
+                android:background="@android:color/transparent"
+                android:hint="@string/pin_code"/>
+
+
+        </RelativeLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardUseCompatPadding="true"
+            android:layout_marginHorizontal="@dimen/_5sdp"
+            android:layout_marginVertical="@dimen/_3sdp"
+            app:cardCornerRadius="@dimen/_3sdp">
+
+        <RelativeLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/_10sdp"
+            android:layout_gravity="start"
+            android:gravity="start">
+
+            <ImageView
+                android:layout_centerVertical="true"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:scaleType="centerInside"
+                android:src="@drawable/city_ic"/>
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etCity"
+                android:layout_width="match_parent"
+                android:layout_marginStart="@dimen/_35sdp"
+                android:layout_marginVertical="@dimen/_10sdp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_regular"
+                android:textSize="@dimen/_12sdp"
+                android:background="@android:color/transparent"
+                android:hint="@string/city"/>
+
+
+        </RelativeLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardUseCompatPadding="true"
+            android:layout_marginHorizontal="@dimen/_5sdp"
+            android:layout_marginVertical="@dimen/_3sdp"
+            app:cardCornerRadius="@dimen/_3sdp">
+
+        <RelativeLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/_10sdp"
+            android:layout_gravity="start"
+            android:gravity="start">
+
+            <ImageView
+                android:layout_centerVertical="true"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:scaleType="centerInside"
+                android:src="@drawable/state_ic"/>
+
+            <Spinner
+                android:id="@+id/spinner_states"
+                android:layout_marginStart="@dimen/_35sdp"
+                android:layout_marginVertical="@dimen/_10sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:spinnerMode="dropdown" />
+
+
+        </RelativeLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardUseCompatPadding="true"
+                android:layout_marginTop="@dimen/_24sdp"
+                android:elevation="10dp"
+                app:cardElevation="@dimen/_10sdp"
+                app:cardCornerRadius="@dimen/_8sdp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnAddAddrsss"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_medium"
+                        android:text="@string/add_address"
+                        android:textAllCaps="false"
+                        android:textSize="@dimen/_12sdp"
+                        app:backgroundTint="@null"
+                        android:textColor="@color/white"
+                        android:background="@drawable/gradient_button" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</RelativeLayout>

@@ -8,16 +8,23 @@ object Constant {
 
 
     const val LOGIN: String = BaseUrl + "login"
+    const val OTP: String = BaseUrl + "otp"
+    const val USERDETAILS: String = BaseUrl + "userdetails"
     const val ADD_ADDRESS: String = BaseUrl + "add_address"
     const val PRODUCT_LIST: String = BaseUrl + "product_list"
     const val ORDERS_LIST: String = BaseUrl + "orders_list"
     const val PLACE_ORDER: String = BaseUrl + "place_order"
+
+    fun getOTPUrl(key: String, mobile: String, otp: String): String {
+        return "https://api.authkey.io/request?authkey=$key&mobile=$mobile&country_code=91&sid=9214&otp=$otp&company=G Mix"
+    }
 
     const val AUTHORIZATION: String = "Authorization"
     const val TOKEN: String = "token"
     const val USER_ID: String = "user_id"
     const val PRODUCT_ID: String = "product_id"
     const val ADDRESS_ID: String = "address_id"
+    const val ID: String = "id"
     const val LIMIT: String = "limit"
     const val TOTAL: String = "total"
     const val OFFSET: String = "offset"
@@ -25,7 +32,7 @@ object Constant {
     const val IS_LOGIN: String = "is_login"
     const val PRICE: String = "price"
     const val PAYMENT_MODE: String = "payment_mode"
-    const val DELIVERY_CHARGE: String = "delivery_charge"
+    const val DELIVERY_CHARGE: String = "delivery_charges"
     const val FROM: String = "from"
     const val SUCCESS: String = "success"
     const val MESSAGE: String = "message"

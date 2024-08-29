@@ -66,8 +66,7 @@ class MyOrderFragment : Fragment() {
 
     private fun buildProfileParams(): HashMap<String, String> {
         return hashMapOf(
-            Constant.USER_ID to "1",
-//            Constant.USER_ID to session.getData(Constant.USER_ID),
+            Constant.USER_ID to session.getData(Constant.USER_ID),
 //            Constant.OFFSET to offset.toString(),
 //            Constant.LIMIT to limit.toString(),
         )

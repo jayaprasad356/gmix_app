@@ -3,17 +3,24 @@ package com.g_mix.app.Activity
 
 import android.app.Activity
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.fragment.app.FragmentManager
 import com.g_mix.app.Fragment.HomeFragment
 import com.g_mix.app.Fragment.MyOrderFragment
 import com.g_mix.app.R
 import com.g_mix.app.helper.Session
 import com.g_mix.app.databinding.ActivityMainBinding
+import com.g_mix.app.helper.ApiConfig
+import com.g_mix.app.helper.Constant
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationBarView
+import org.json.JSONException
+import org.json.JSONObject
+import java.util.HashMap
 
 class MainActivity : BaseActivity(), NavigationBarView.OnItemSelectedListener {
     lateinit var binding: ActivityMainBinding
@@ -57,6 +64,7 @@ class MainActivity : BaseActivity(), NavigationBarView.OnItemSelectedListener {
     private fun initializeComponents() {
         activity = this
         session = Session(activity)
+        userdetails()
         fm = supportFragmentManager
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
@@ -89,6 +97,36 @@ class MainActivity : BaseActivity(), NavigationBarView.OnItemSelectedListener {
         }
         transaction.commit()
         return true
+    }
+
+    private fun userdetails() {
+        val params = HashMap<String, String>()
+        params[Constant.USER_ID] = "1"
+        ApiConfig.RequestToVolley({ result, response ->
+            if (result) {
+                try {
+                    val jsonObject = JSONObject(response)
+                    Log.d("SIGNUP_RES", response)
+                    if (jsonObject.getBoolean(Constant.SUCCESS)) {
+                        val jsonArray = jsonObject.getJSONArray(Constant.DATA)
+//                        session.setData(Constant.USER_ID, jsonArray.getJSONObject(0).getString(Constant.ID))
+                    } else {
+                        Toast.makeText(
+                            this,
+                            "" + jsonObject.getString(Constant.MESSAGE),
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                } catch (e: JSONException) {
+                    Log.d("USERDETAILS_ERROR", "USERDETAILS_ERROR: $e")
+                }
+            } else {
+                Log.d("USERDETAILS_ERROR", "USERDETAILS_RESULT_ERROR")
+            }
+        }, this, Constant.USERDETAILS, params, true)
+
+        Log.d("USERDETAILS", "USERDETAILS: " + Constant.USERDETAILS)
+        Log.d("USERDETAILS", "USERDETAILSparams: " + params)
     }
 }
 

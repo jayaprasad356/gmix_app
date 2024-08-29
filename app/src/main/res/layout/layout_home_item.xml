@@ -34,7 +34,7 @@
                     android:id="@+id/ivItemImage"
                     android:layout_width="@dimen/_80sdp"
                     android:layout_height="@dimen/_80sdp"
-                    android:scaleType="centerCrop"
+                    android:scaleType="fitCenter"
                     android:src="@drawable/demo_image"
                     android:layout_centerHorizontal="true"/>
 
@@ -51,7 +51,7 @@
                     android:id="@+id/tvPrice"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/_123_00"
+                    android:text=""
                     android:textSize="@dimen/_12sdp"
                     android:textColor="@color/darkGreen"
                     android:gravity="center"
@@ -61,7 +61,7 @@
                     android:id="@+id/tvTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/abc_juice_powder"
+                    android:text=""
                     android:textSize="@dimen/_14sdp"
                     android:textColor="?attr/myTextColor"
                     android:gravity="center"
@@ -71,7 +71,7 @@
                     android:id="@+id/tvKilogram"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/_80_gram"
+                    android:text=""
                     android:textSize="@dimen/_10sdp"
                     android:textColor="?attr/textgrey"
                     android:gravity="center"
@@ -95,10 +95,10 @@
                     android:gravity="center">
 
                     <ImageView
-                        android:layout_width="@dimen/_18sdp"
+                        android:layout_width="@dimen/_15sdp"
                         android:layout_margin="@dimen/_5sdp"
-                        android:layout_height="@dimen/_20sdp"
-                        android:scaleType="centerCrop"
+                        android:layout_height="@dimen/_17sdp"
+                        android:scaleType="fitCenter"
                         android:src="@drawable/bag_ic"
                         android:layout_centerHorizontal="true"/>
 

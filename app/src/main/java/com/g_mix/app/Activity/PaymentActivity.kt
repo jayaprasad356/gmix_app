@@ -1,9 +1,12 @@
 package com.g_mix.app.Activity
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.ImageView
+import android.widget.RadioButton
 import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
@@ -25,6 +28,11 @@ class PaymentActivity : BaseActivity() {
     lateinit var session: Session
     private var isLoading = false
 
+    private lateinit var rdbSelectUPI: RadioButton
+    private lateinit var rdbSelectCashOn: RadioButton
+    private var selectedPaymentMode: String = ""
+
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -33,15 +41,39 @@ class PaymentActivity : BaseActivity() {
         activity = this
         session = Session(activity)
 
-        var id = intent.getStringExtra("ID")
+        var productId = intent.getStringExtra("PRODUCT_ID")
         var itemName = intent.getStringExtra("ITEM_NAME")
-        var itemPrice = intent.getStringExtra("ITEM_PRICE")
+        var itemPrice = intent.getStringExtra("ITEM_PRICE")?.toDoubleOrNull() ?: 0.0
         var itemImage = intent.getStringExtra("ITEM_IMAGE")
         var itemWeight = intent.getStringExtra("ITEM_WEIGHT")
+        var userName = intent.getStringExtra("NAME")
+        var mobileNumber = intent.getStringExtra("MOBILE_NUMBER")
+        var address = intent.getStringExtra("ADDRESS")
+        var addressId = intent.getStringExtra("ADDRESS_ID")
+
+        var quantity = 1
+        val totalQuantityPrice = itemPrice * quantity
+
+        val totalPrice = totalQuantityPrice + 10
 
         // Find views and set data
         findViewById<TextView>(R.id.tvItemName).text = itemName
         findViewById<TextView>(R.id.tvItemWeight).text = itemWeight
+        findViewById<TextView>(R.id.tvPrice).text = "₹$itemPrice"
+        findViewById<TextView>(R.id.tvDeliveryCharges).text = "₹" + "10"
+        findViewById<TextView>(R.id.tvTotal).text = "₹$totalPrice"
+        findViewById<TextView>(R.id.tvName).text = userName
+        findViewById<TextView>(R.id.tvAddress).text = address
+        findViewById<TextView>(R.id.tvMobileNumber).text = mobileNumber
+
+
+        // Initialize RadioButtons
+        rdbSelectUPI = findViewById(R.id.rdbSelectUPI)
+        rdbSelectCashOn = findViewById(R.id.rdbSelectCashOn)
+
+        // Set listeners for RadioButtons
+        rdbSelectUPI.setOnClickListener { onRadioButtonClicked(rdbSelectUPI) }
+        rdbSelectCashOn.setOnClickListener { onRadioButtonClicked(rdbSelectCashOn) }
 
         Glide.with(this)
             .load(itemImage)
@@ -53,39 +85,95 @@ class PaymentActivity : BaseActivity() {
             onBackPressed()
         }
 
+        val tvQuantityVal = findViewById<TextView>(R.id.tvQuantityVal)
+        val btnIncrease = findViewById<ImageView>(R.id.btnIncrease)
+        val btnDecrease = findViewById<ImageView>(R.id.btnDecrease)
+
+        tvQuantityVal.text = quantity.toString()
+
+        btnIncrease.setOnClickListener {
+            quantity += 1
+            tvQuantityVal.text = quantity.toString()
+
+            val totalQuantityPrice = itemPrice * quantity
+            val totalPrice = totalQuantityPrice + 10
+            findViewById<TextView>(R.id.tvTotal).text = "₹$totalPrice"
+        }
+
+        btnDecrease.setOnClickListener {
+            if (quantity > 1) {
+                quantity -= 1
+                tvQuantityVal.text = quantity.toString()
+
+                val totalQuantityPrice = itemPrice * quantity
+                val totalPrice = totalQuantityPrice + 10
+                findViewById<TextView>(R.id.tvTotal).text = "₹$totalPrice"
+            }
+        }
+
         binding.btnConfirm.setOnClickListener {
-            placeOrder(
-                id ?: "",
-                itemName ?: "",
-                itemPrice ?: "",
-                itemImage ?: "",
-                itemWeight ?: ""
-            )
+            if(selectedPaymentMode != ""){
+                placeOrder(
+                    productId ?: "",
+                    itemPrice.toString() ?: "",
+                    addressId ?: "",
+                    "100",
+//                    deliveryCharges ?: ""
+                )
+            } else {
+                Toast.makeText(activity, "Please select your payment method.", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
+    private fun onRadioButtonClicked(selectedRadioButton: RadioButton) {
+        // Uncheck the other RadioButton
+        if (selectedRadioButton == rdbSelectUPI) {
+            rdbSelectCashOn.isChecked = false
+            selectedPaymentMode = "upi"
+        } else if (selectedRadioButton == rdbSelectCashOn) {
+            rdbSelectUPI.isChecked = false
+            selectedPaymentMode = "cod"
+        }
 
+        // Mark the selected RadioButton as checked
+        selectedRadioButton.isChecked = true
+    }
 
-    private fun placeOrder( id: String, itemName: String, itemPrice: String, itemImage: String, itemWeight: String) {
+    private fun placeOrder(
+        productId: String,
+        itemPrice: String,
+        addressId: String,
+        deliveryCharges: String,
+        ) {
         if (isLoading) return
         isLoading = true
 
-        val params = buildProfileParams( id, itemName, itemPrice, itemImage, itemWeight)
+        val params = buildProfileParams(
+            productId,
+            itemPrice,
+            addressId,
+            deliveryCharges)
         ApiConfig.RequestToVolley({ result, response ->
             handleProfileResponse(result, response)
-        }, activity, Constant.PRODUCT_LIST, params, true, 1)
+        }, activity, Constant.PLACE_ORDER, params, true, 1)
+
+        Log.d("PLACE_ORDER", "PLACE_ORDER: " + Constant.PLACE_ORDER)
+        Log.d("PLACE_ORDER", "PLACE_ORDERparams: " + params)
     }
 
-    private fun buildProfileParams( id: String, itemName: String, itemPrice: String, itemImage: String, itemWeight: String): HashMap<String, String> {return hashMapOf(
-            Constant.USER_ID to "1",
-//            Constant.USER_ID to session.getData(Constant.USER_ID),
-            Constant.PRODUCT_ID to "1",
-//            Constant.PRODUCT_ID to id,
-            Constant.ADDRESS_ID to "1",
-//            Constant.ADDRESS_ID to ADDRESS_ID,
+    private fun buildProfileParams(
+        productId: String,
+        itemPrice: String,
+        addressId: String,
+        deliveryCharges: String,
+        ): HashMap<String, String> {return hashMapOf(
+            Constant.USER_ID to session.getData(Constant.USER_ID),
+            Constant.PRODUCT_ID to productId,
+            Constant.ADDRESS_ID to addressId,
             Constant.PRICE to itemPrice,
-            Constant.DELIVERY_CHARGE to "100",
-            Constant.PAYMENT_MODE to "cod",
+            Constant.DELIVERY_CHARGE to deliveryCharges,
+            Constant.PAYMENT_MODE to selectedPaymentMode,
         )
     }
 

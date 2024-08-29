@@ -56,7 +56,7 @@ class HomeAdapter(private val context: Context, private val items: List<HomeProd
 
         viewHolder.btnBuy.setOnClickListener {
             val intent = Intent(context, AddressDetailActivity::class.java).apply {
-                putExtra("id", product.id)
+                putExtra("PRODUCT_ID", product.id)
                 putExtra("ITEM_NAME", product.name)
                 putExtra("ITEM_PRICE", product.price)
                 putExtra("ITEM_IMAGE", product.image)

@@ -56,16 +56,15 @@
                 xmlns:app="http://schemas.android.com/apk/res-auto"
                 app:cardCornerRadius="@dimen/_3sdp">
 
-                <RelativeLayout
-
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="@dimen/_5sdp">
+                    android:baselineAligned="false"
+                    android:orientation="horizontal">
 
-                    <RelativeLayout
-                        android:id="@+id/lytImgThumb"
-                        android:layout_width="@dimen/_80sdp"
-                        android:layout_height="@dimen/_80sdp"
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_margin="@dimen/_5sdp">
 
                         <ImageView
@@ -73,90 +72,84 @@
                             android:layout_width="@dimen/_80sdp"
                             android:layout_height="@dimen/_80sdp"
                             android:importantForAccessibility="no"
-                            android:scaleType="centerCrop"
-                            android:layout_gravity="center"/>
+                            android:scaleType="fitCenter"
+                            android:layout_gravity="center"
+                            android:src="@drawable/demo_image"/>
 
-                    </RelativeLayout>
+                    </LinearLayout>
 
-                    <RelativeLayout
-                        android:id="@+id/lytPrice"
-                        android:layout_width="match_parent"
+                    <LinearLayout
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_toEndOf="@+id/lytImgThumb"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
                         android:layout_margin="@dimen/_5sdp">
 
-                        <RelativeLayout
-                            android:id="@+id/priceLayout"
+                        <TextView
+                            android:id="@+id/tvItemName"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textSize="@dimen/_14sdp"
+                            android:textColor="?attr/myTextColor"
+                            android:fontFamily="@font/poppins_medium"/>
 
-                            <RelativeLayout
-                                android:id="@+id/tvHeading"
-                                android:layout_width="match_parent"
+                        <TextView
+                            android:id="@+id/tvItemWeight"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textSize="@dimen/_10sdp"
+                            android:textColor="?attr/textgrey"
+                            android:fontFamily="@font/poppins_medium"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            >
+
+                            <TextView
+                                android:layout_gravity="center"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:layout_alignParentTop="true">
+                                android:layout_weight="1"
+                                android:text="@string/quantity"
+                                android:textSize="@dimen/_10sdp"
+                                android:textColor="?attr/textgrey"
+                                android:fontFamily="@font/poppins_medium"/>
 
-                                <TextView
-                                    android:id="@+id/tvItemName"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="@string/abc_juice_powder"
-                                    android:textSize="@dimen/_14sdp"
-                                    android:textColor="?attr/myTextColor"
-                                    android:fontFamily="@font/poppins_medium"/>
 
-                            </RelativeLayout>
+                            <ImageView
+                                android:layout_gravity="center"
+                                android:id="@+id/btnDecrease"
+                                android:layout_width="@dimen/_20sdp"
+                                android:layout_height="@dimen/_20sdp"
+                                android:src="@drawable/ic_decrease"/>
 
-                            <RelativeLayout
-                                android:id="@+id/tvWeight"
-                                android:layout_width="match_parent"
+                            <TextView
+                                android:layout_gravity="center"
+                                android:id="@+id/tvQuantityVal"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:layout_below="@+id/tvHeading">
+                                android:layout_weight="1"
+                                android:text="1"
+                                android:textSize="@dimen/_12sdp"
+                                android:gravity="center"
+                                android:textColor="?attr/myTextColor"
+                                android:fontFamily="@font/poppins_bold"/>
 
-                                <TextView
-                                    android:id="@+id/tvItemWeight"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="@string/_80_gram"
-                                    android:textSize="@dimen/_10sdp"
-                                    android:textColor="?attr/textgrey"
-                                    android:fontFamily="@font/poppins_medium"/>
+                            <ImageView
+                                android:layout_gravity="center"
+                                android:id="@+id/btnIncrease"
+                                android:layout_width="@dimen/_20sdp"
+                                android:layout_height="@dimen/_20sdp"
+                                android:src="@drawable/ic_increase"/>
 
-                            </RelativeLayout>
+                        </LinearLayout>
+                    </LinearLayout>
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/_3sdp"
-                                android:layout_marginBottom="@dimen/_3sdp"
-                                android:baselineAligned="false"
-                                android:orientation="horizontal"
-                                android:weightSum="2"
-                                android:layout_below="@+id/tvWeight">
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="@string/quantity"
-                                    android:textSize="@dimen/_10sdp"
-                                    android:textColor="?attr/textgrey"
-                                    android:fontFamily="@font/poppins_medium"/>
-
-                                <TextView
-                                    android:id="@+id/tvQuantityVal"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="10"
-                                    android:textSize="@dimen/_12sdp"
-                                    android:layout_marginStart="@dimen/_5sdp"
-                                    android:textColor="?attr/myTextColor"
-                                    android:fontFamily="@font/poppins_bold"/>
-
-                            </LinearLayout>
-                        </RelativeLayout>
-                    </RelativeLayout>
-
-                </RelativeLayout>
+                </LinearLayout>
 
             </com.google.android.material.card.MaterialCardView>
 
@@ -177,17 +170,16 @@
                 xmlns:app="http://schemas.android.com/apk/res-auto"
                 app:cardCornerRadius="@dimen/_3sdp">
 
-                <RelativeLayout
-
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="@dimen/_5sdp">
+                    android:baselineAligned="false"
+                    android:layout_margin="@dimen/_5sdp"
+                    android:orientation="horizontal">
 
-                    <RelativeLayout
-                        android:id="@+id/lytImgLocation"
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
                         android:layout_margin="@dimen/_5sdp">
 
                         <ImageView
@@ -198,70 +190,45 @@
                             android:layout_gravity="center"
                             android:src="@drawable/location_bg_im"/>
 
-                    </RelativeLayout>
+                    </LinearLayout>
 
-                    <RelativeLayout
-                        android:layout_width="match_parent"
+                    <LinearLayout
+                        android:layout_gravity="center"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_toEndOf="@+id/lytImgLocation"
-
+                        android:layout_weight="1"
+                        android:orientation="vertical"
                         android:layout_margin="@dimen/_5sdp">
 
-                        <RelativeLayout
+                        <TextView
+                            android:id="@+id/tvName"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textSize="@dimen/_12sdp"
+                            android:textColor="?attr/myTextColor"
+                            android:fontFamily="@font/poppins_medium"/>
 
-                            <RelativeLayout
-                                android:id="@+id/tvLcHeading"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentTop="true">
+                        <TextView
+                            android:id="@+id/tvAddress"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textSize="@dimen/_8sdp"
+                            android:textColor="?attr/textgrey"
+                            android:fontFamily="@font/poppins_medium"/>
 
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="Nandha"
-                                    android:textSize="@dimen/_14sdp"
-                                    android:textColor="?attr/myTextColor"
-                                    android:fontFamily="@font/poppins_medium"/>
+                        <TextView
+                            android:id="@+id/tvMobileNumber"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textSize="@dimen/_10sdp"
+                            android:textColor="?attr/myTextColor"
+                            android:fontFamily="@font/poppins_medium"/>
+                    </LinearLayout>
 
-                            </RelativeLayout>
-
-                            <RelativeLayout
-                                android:id="@+id/tvLcWeight"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@+id/tvLcHeading">
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="5/1148, South Street, Kottur, Thiruvarur Dt Tamil Nadu - 614001"
-                                    android:textSize="@dimen/_8sdp"
-                                    android:textColor="?attr/textgrey"
-                                    android:fontFamily="@font/poppins_medium"/>
-
-                            </RelativeLayout>
-
-                            <RelativeLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@+id/tvLcWeight">
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="+91 987654321"
-                                    android:textSize="@dimen/_10sdp"
-                                    android:layout_marginStart="@dimen/_5sdp"
-                                    android:textColor="?attr/myTextColor"
-                                    android:fontFamily="@font/poppins_bold"/>
-
-                            </RelativeLayout>
-                        </RelativeLayout>
-                    </RelativeLayout>
-
-                </RelativeLayout>
+                </LinearLayout>
 
             </com.google.android.material.card.MaterialCardView>
 
@@ -282,13 +249,20 @@
                 xmlns:app="http://schemas.android.com/apk/res-auto"
                 app:cardCornerRadius="@dimen/_3sdp">
 
-                <RelativeLayout
-
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="@dimen/_5sdp">
+                    android:padding="@dimen/_5sdp"
+                    android:orientation="vertical">
 
-                    <RelativeLayout
+                    <LinearLayout
+                        android:id="@+id/llUPI"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:baselineAligned="false"
+                        android:orientation="horizontal">
+
+                    <LinearLayout
                         android:id="@+id/lytImgPayUpi"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -302,125 +276,111 @@
                             android:layout_gravity="center"
                             android:src="@drawable/upi_bg_im"/>
 
-                    </RelativeLayout>
+                    </LinearLayout>
 
-                    <RelativeLayout
-                        android:layout_width="match_parent"
+                    <LinearLayout
+                        android:layout_gravity="center"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_toEndOf="@+id/lytImgPayUpi"
-
+                        android:layout_weight="1"
+                        android:orientation="vertical"
                         android:layout_margin="@dimen/_5sdp">
 
-                        <RelativeLayout
+                        <TextView
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:text="@string/pre_paid"
+                            android:textSize="@dimen/_12sdp"
+                            android:textColor="?attr/myTextColor"
+                            android:fontFamily="@font/poppins_medium"/>
 
-                            <RelativeLayout
-                                android:id="@+id/tvUpiHeading"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentTop="true">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/pay_using_your_upi_payment_gpay_phonepe_paytm"
+                            android:textSize="@dimen/_8sdp"
+                            android:textColor="?attr/textgrey"
+                            android:fontFamily="@font/poppins_medium"/>
+                    </LinearLayout>
 
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="@string/pre_paid"
-                                    android:textSize="@dimen/_14sdp"
-                                    android:textColor="?attr/myTextColor"
-                                    android:fontFamily="@font/poppins_medium"/>
+                        <RadioButton
+                            android:id="@+id/rdbSelectUPI"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:padding="@dimen/_5sdp"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"/>
 
-                            </RelativeLayout>
-
-                            <RelativeLayout
-                                android:id="@+id/tvUpiWeight"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@+id/tvUpiHeading">
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="@string/pay_using_your_upi_payment_gpay_phonepe_paytm"
-                                    android:textSize="@dimen/_10sdp"
-                                    android:textColor="?attr/textgrey"
-                                    android:fontFamily="@font/poppins_medium"/>
-
-                            </RelativeLayout>
-                        </RelativeLayout>
-                    </RelativeLayout>
+                    </LinearLayout>
 
                     <View
                         android:id="@+id/dvView"
                         android:layout_marginVertical="@dimen/_5sdp"
-                        android:layout_below="@+id/lytImgPayUpi"
                         android:layout_width="match_parent"
                         android:layout_height="0.5dp"
                         android:background="@color/grey" />
 
-                    <RelativeLayout
-                        android:layout_below="@+id/dvView"
-                        android:id="@+id/lytImgPayCash"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/_5sdp">
-
-                        <ImageView
-                            android:layout_width="@dimen/_60sdp"
-                            android:layout_height="@dimen/_60sdp"
-                            android:importantForAccessibility="no"
-                            android:scaleType="centerCrop"
-                            android:layout_gravity="center"
-                            android:src="@drawable/chas_bg_im"/>
-
-                    </RelativeLayout>
-
-                    <RelativeLayout
+                    <LinearLayout
+                        android:id="@+id/llCash"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/dvView"
-                        android:layout_toEndOf="@+id/lytImgPayCash"
+                        android:baselineAligned="false"
+                        android:orientation="horizontal">
 
-                        android:layout_margin="@dimen/_5sdp">
+                        <LinearLayout
+                            android:id="@+id/lytImgPayCash"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/_5sdp">
 
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            <ImageView
+                                android:layout_width="@dimen/_60sdp"
+                                android:layout_height="@dimen/_60sdp"
+                                android:importantForAccessibility="no"
+                                android:scaleType="centerCrop"
+                                android:layout_gravity="center"
+                                android:src="@drawable/chas_bg_im"/>
 
-                            <RelativeLayout
-                                android:id="@+id/tvChasHeading"
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_gravity="center"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:layout_margin="@dimen/_5sdp">
+
+                            <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_alignParentTop="true">
+                                android:text="@string/partial_cash_on_delivery"
+                                android:textSize="@dimen/_12sdp"
+                                android:textColor="?attr/myTextColor"
+                                android:fontFamily="@font/poppins_medium"/>
 
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="@string/partial_cash_on_delivery"
-                                    android:textSize="@dimen/_14sdp"
-                                    android:textColor="?attr/myTextColor"
-                                    android:fontFamily="@font/poppins_medium"/>
-
-                            </RelativeLayout>
-
-                            <RelativeLayout
-                                android:id="@+id/tvCashWeight"
+                            <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_below="@+id/tvChasHeading">
+                                android:text="@string/partial_cash_on_delivery_allows_customers_to_pay_a_portion_online_and_the_rest_in_cash_upon_delivery"
+                                android:textSize="@dimen/_8sdp"
+                                android:textColor="?attr/textgrey"
+                                android:fontFamily="@font/poppins_medium"/>
+                        </LinearLayout>
 
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="@string/partial_cash_on_delivery_allows_customers_to_pay_a_portion_online_and_the_rest_in_cash_upon_delivery"
-                                    android:textSize="@dimen/_10sdp"
-                                    android:textColor="?attr/textgrey"
-                                    android:fontFamily="@font/poppins_medium"/>
+                        <RadioButton
+                            android:id="@+id/rdbSelectCashOn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:padding="@dimen/_5sdp"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"/>
 
-                            </RelativeLayout>
-                        </RelativeLayout>
-                    </RelativeLayout>
+                    </LinearLayout>
 
-                </RelativeLayout>
+                </LinearLayout>
 
             </com.google.android.material.card.MaterialCardView>
 
@@ -441,37 +401,34 @@
                 xmlns:app="http://schemas.android.com/apk/res-auto"
                 app:cardCornerRadius="@dimen/_3sdp">
 
-                <RelativeLayout
-
+                <LinearLayout
+                    android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="@dimen/_5sdp">
 
                     <LinearLayout
-                        android:id="@+id/tvPrice"
                         android:layout_marginHorizontal="@dimen/_5sdp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_3sdp"
                         android:layout_marginBottom="@dimen/_3sdp"
-                        android:baselineAligned="false"
-                        android:orientation="horizontal"
-                        android:weightSum="2">
+                        android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="Price"
-                            android:textSize="@dimen/_12sdp"
+                            android:textSize="@dimen/_10sdp"
                             android:textColor="?attr/textgrey"
                             android:fontFamily="@font/poppins_medium"/>
 
                         <TextView
-                            android:layout_weight="1"
-                            android:layout_width="0dp"
+                            android:id="@+id/tvPrice"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="₹599"
+                            android:text=""
                             android:textSize="@dimen/_10sdp"
                             android:textColor="?attr/textgrey"
                             android:textAlignment="textEnd"
@@ -480,31 +437,27 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_below="@+id/tvPrice"
-                        android:id="@+id/tvDelivaryCharge"
                         android:layout_marginHorizontal="@dimen/_5sdp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_3sdp"
                         android:layout_marginBottom="@dimen/_3sdp"
-                        android:baselineAligned="false"
-                        android:orientation="horizontal"
-                        android:weightSum="2">
+                        android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="@string/delivery_charges"
-                            android:textSize="@dimen/_12sdp"
+                            android:textSize="@dimen/_10sdp"
                             android:textColor="?attr/textgrey"
                             android:fontFamily="@font/poppins_medium"/>
 
                         <TextView
-                            android:layout_weight="1"
-                            android:layout_width="0dp"
+                            android:id="@+id/tvDeliveryCharges"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="₹40"
+                            android:text=""
                             android:textSize="@dimen/_10sdp"
                             android:textColor="?attr/textgrey"
                             android:textAlignment="textEnd"
@@ -513,7 +466,6 @@
                     </LinearLayout>
 
                     <View
-                        android:layout_below="@+id/tvDelivaryCharge"
                         android:id="@+id/dvPriceView"
                         android:layout_marginVertical="@dimen/_5sdp"
                         android:layout_width="match_parent"
@@ -521,16 +473,12 @@
                         android:background="@color/grey" />
 
                     <LinearLayout
-                        android:layout_below="@+id/dvPriceView"
-                        android:id="@+id/tvTotal"
                         android:layout_marginHorizontal="@dimen/_5sdp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_3sdp"
                         android:layout_marginBottom="@dimen/_3sdp"
-                        android:baselineAligned="false"
-                        android:orientation="horizontal"
-                        android:weightSum="2">
+                        android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="0dp"
@@ -542,18 +490,17 @@
                             android:fontFamily="@font/poppins_medium"/>
 
                         <TextView
-                            android:layout_weight="1"
-                            android:layout_width="0dp"
+                            android:id="@+id/tvTotal"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="₹776"
-                            android:textSize="@dimen/_10sdp"
-                            android:textColor="?attr/textgrey"
-                            android:textAlignment="textEnd"
+                            android:text=""
+                            android:textSize="@dimen/_14sdp"
+                            android:textColor="?attr/myTextColor"
                             android:fontFamily="@font/poppins_medium"/>
 
                     </LinearLayout>
 
-                </RelativeLayout>
+                </LinearLayout>
 
             </com.google.android.material.card.MaterialCardView>
 

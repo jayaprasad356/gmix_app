@@ -111,40 +111,28 @@
 
                             <TextView
                                 android:layout_gravity="center"
-                                android:layout_width="0dp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
                                 android:text="@string/quantity"
                                 android:textSize="@dimen/_10sdp"
                                 android:textColor="?attr/textgrey"
                                 android:fontFamily="@font/poppins_medium"/>
 
 
-                            <ImageView
-                                android:layout_gravity="center"
-                                android:id="@+id/btnDecrease"
-                                android:layout_width="@dimen/_20sdp"
-                                android:layout_height="@dimen/_20sdp"
-                                android:src="@drawable/ic_decrease"/>
+
 
                             <TextView
                                 android:layout_gravity="center"
                                 android:id="@+id/tvQuantityVal"
-                                android:layout_width="0dp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="1"
+                                android:text=" 1"
                                 android:textSize="@dimen/_12sdp"
                                 android:gravity="center"
                                 android:textColor="?attr/myTextColor"
-                                android:fontFamily="@font/poppins_bold"/>
+                                android:fontFamily="@font/poppins_semibold"/>
 
-                            <ImageView
-                                android:layout_gravity="center"
-                                android:id="@+id/btnIncrease"
-                                android:layout_width="@dimen/_20sdp"
-                                android:layout_height="@dimen/_20sdp"
-                                android:src="@drawable/ic_increase"/>
+
 
                         </LinearLayout>
                     </LinearLayout>
@@ -310,6 +298,8 @@
                             android:layout_gravity="center_vertical"
                             android:padding="@dimen/_5sdp"
                             android:focusable="false"
+                            android:checked="true"
+                            android:buttonTint="@color/green"
                             android:focusableInTouchMode="false"/>
 
                     </LinearLayout>
@@ -355,7 +345,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="@string/partial_cash_on_delivery"
+                                android:text="Cash On Delivery"
                                 android:textSize="@dimen/_12sdp"
                                 android:textColor="?attr/myTextColor"
                                 android:fontFamily="@font/poppins_medium"/>
@@ -363,7 +353,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="@string/partial_cash_on_delivery_allows_customers_to_pay_a_portion_online_and_the_rest_in_cash_upon_delivery"
+                                android:text="Cash on delivery allows people to pay money after receiving the product."
                                 android:textSize="@dimen/_8sdp"
                                 android:textColor="?attr/textgrey"
                                 android:fontFamily="@font/poppins_medium"/>
@@ -375,6 +365,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:padding="@dimen/_5sdp"
+                            android:buttonTint="@color/green"
                             android:focusable="false"
                             android:focusableInTouchMode="false"/>
 
@@ -449,7 +440,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="@string/delivery_charges"
-                            android:textSize="@dimen/_10sdp"
+                            android:textSize="@dimen/_8sdp"
                             android:textColor="?attr/textgrey"
                             android:fontFamily="@font/poppins_medium"/>
 
@@ -458,7 +449,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text=""
-                            android:textSize="@dimen/_10sdp"
+                            android:textSize="@dimen/_8sdp"
                             android:textColor="?attr/textgrey"
                             android:textAlignment="textEnd"
                             android:fontFamily="@font/poppins_medium"/>
@@ -485,18 +476,18 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="@string/total"
-                            android:textSize="@dimen/_14sdp"
+                            android:textSize="@dimen/_16sdp"
                             android:textColor="?attr/myTextColor"
-                            android:fontFamily="@font/poppins_medium"/>
+                            android:fontFamily="@font/poppins_semibold"/>
 
                         <TextView
                             android:id="@+id/tvTotal"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text=""
-                            android:textSize="@dimen/_14sdp"
+                            android:textSize="@dimen/_16sdp"
                             android:textColor="?attr/myTextColor"
-                            android:fontFamily="@font/poppins_medium"/>
+                            android:fontFamily="@font/poppins_semibold"/>
 
                     </LinearLayout>
 

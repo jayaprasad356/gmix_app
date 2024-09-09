@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:background="#FFBDBD"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/rlToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_20sdp">
+
+        <ImageButton
+            android:id="@+id/ivBack"
+            android:layout_width="@dimen/_18sdp"
+            android:layout_height="@dimen/_18sdp"
+            android:background="@drawable/arrow_left"
+            android:backgroundTint="?attr/iconColor" />
+
+
+
+
+        <ImageView
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_below="@+id/ivBack"
+            android:id="@+id/ivProductImage"
+            android:layout_width="@dimen/_140sdp"
+            android:layout_height="@dimen/_140sdp"
+            android:layout_centerHorizontal="true"
+            />
+
+
+
+
+
+    </RelativeLayout>
+
+
+
+    <RelativeLayout
+        android:layout_below="@+id/rlToolbar"
+        android:padding="@dimen/_10sdp"
+        android:background="@drawable/topcorner"
+        android:layout_above="@+id/rlBottom"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+
+
+
+
+        <LinearLayout
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_margin="@dimen/_5sdp">
+
+
+            <LinearLayout
+                android:weightSum="2"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_weight="1.4"
+                    android:id="@+id/tvProductName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textSize="@dimen/_14sdp"
+                    android:layout_margin="@dimen/_5sdp"
+                    android:textColor="?attr/myTextColor"
+                    android:fontFamily="@font/poppins_semibold"/>
+
+                <RelativeLayout
+                    android:layout_weight="0.6"
+                    android:background="@drawable/round_circle"
+                    android:padding="@dimen/_5sdp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content">
+
+
+
+                    <ImageButton
+                        android:id="@+id/ivSub"
+                        android:layout_centerVertical="true"
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:background="@drawable/minus_circle"
+                        />
+
+
+                    <TextView
+                        android:id="@+id/tvCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1"
+                        android:layout_centerInParent="true"
+                        android:textColor="@color/darkGreen"
+                        android:textSize="@dimen/_14sdp"
+                        android:fontFamily="@font/poppins_semibold"
+                        />
+
+
+                    <ImageButton
+                        android:id="@+id/ivAdd"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:background="@drawable/plus_circle"
+                        />
+
+
+
+
+
+
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="@dimen/_14sdp"
+                    android:layout_height="@dimen/_14sdp"
+                    android:background="@drawable/star_ic"
+                    android:backgroundTint="@color/text_gold"
+                    />
+
+
+                <TextView
+                    android:id="@+id/tvRatings"
+                    android:layout_marginLeft="@dimen/_5sdp"
+                    android:gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:layout_gravity="center_vertical"
+                    android:textSize="@dimen/_10sdp"
+                    android:textColor="?attr/textgrey"
+                    android:fontFamily="@font/poppins_medium"/>
+
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginTop="@dimen/_5sdp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Size:"
+                    android:textSize="@dimen/_12sdp"
+                    android:textColor="?attr/myTextColor"
+                    android:fontFamily="@font/poppins_medium"/>
+
+
+                <TextView
+                    android:id="@+id/tvProductWeight"
+                    android:layout_marginLeft="@dimen/_5sdp"
+                    android:gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:layout_gravity="center_vertical"
+                    android:textSize="@dimen/_10sdp"
+                    android:textColor="?attr/textgrey"
+                    android:fontFamily="@font/poppins_medium"/>
+
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_marginTop="@dimen/_30sdp"
+                android:weightSum="2"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tvDiscription"
+                    android:gravity="end"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Description"
+                    android:textSize="@dimen/_12sdp"
+                    android:textColor="@color/darkGreen"
+                    android:fontFamily="@font/poppins_bold"/>
+                <TextView
+                    android:id="@+id/tvReview"
+                    android:layout_marginLeft="@dimen/_20sdp"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Review"
+                    android:textSize="@dimen/_12sdp"
+                    android:textColor="@color/grey"
+                    android:fontFamily="@font/poppins_bold"/>
+
+
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:id="@+id/llDiscription"
+                android:visibility="gone"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <WebView
+                    android:id="@+id/wvDiscription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_medium"
+                    android:textColor="?attr/myTextColor" />
+
+
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvReview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+
+
+        </LinearLayout>
+
+
+
+        </androidx.core.widget.NestedScrollView>
+
+
+
+
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/rlBottom"
+        android:padding="@dimen/_10sdp"
+        android:background="@color/white"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+
+
+
+
+        <LinearLayout
+            android:layout_marginHorizontal="@dimen/_5sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_3sdp"
+            android:layout_marginBottom="@dimen/_3sdp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Total Price"
+                android:textSize="@dimen/_10sdp"
+                android:textColor="?attr/textgrey"
+                android:fontFamily="@font/poppins_medium"/>
+
+            <TextView
+                android:id="@+id/tvTotal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="@dimen/_16sdp"
+                android:textColor="?attr/myTextColor"
+                android:fontFamily="@font/poppins_semibold"/>
+
+        </LinearLayout>
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnBuynow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/buy_now"
+            android:textAllCaps="false"
+            android:textSize="@dimen/_12sdp"
+            android:drawableTint="@color/white"
+            android:textColor="@color/white"
+            android:background="@drawable/gradient_button"
+            app:backgroundTint="@color/darkGreen"
+            app:icon="@drawable/bag"
+        app:iconTint="@color/white"
+        app:iconGravity="textStart"
+        app:iconPadding="@dimen/_10sdp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true" />
+
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

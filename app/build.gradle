@@ -6,15 +6,15 @@ plugins {
 }
 
 android {
-    namespace 'com.g_mix.app'
+    namespace 'com.g_mix.gmw_app'
     compileSdk 34
 
     defaultConfig {
-        applicationId "com.g_mix.app"
+        applicationId "com.g_mix.gmw_app"
         minSdk 24
         targetSdk 34
-        versionCode 1
-        versionName "1.0"
+        versionCode 4
+        versionName "4.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
             useSupportLibrary true

@@ -6,11 +6,23 @@
         android:icon="@drawable/nav_home"
         android:title="Home" />
 
+    <item
+        android:id="@+id/navReward"
+        android:icon="@drawable/outline_reward_ic"
+        android:title="Reward" />
+
 
     <item
+        android:visible="false"
         android:id="@+id/navMyOrder"
         android:icon="@drawable/nav_my_product"
         android:title="My Orders" />
+
+
+    <item
+        android:id="@+id/navMyProfile"
+        android:icon="@drawable/myprofile_ic"
+        android:title="My Profile" />
 
 
 

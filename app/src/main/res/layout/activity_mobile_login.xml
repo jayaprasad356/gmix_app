@@ -54,7 +54,10 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 app:ccp_defaultNameCode="IN"
+                app:ccp_textSize="@dimen/_10sdp"
                 app:ccp_showFlag="false"/>
+
+
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
@@ -63,8 +66,8 @@
                 android:layout_marginStart="8dp"
                 android:hint="@string/mobile_number"
                 app:hintTextColor="@color/primary"
-                app:boxStrokeColor="@color/primary"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                style="@style/CustomTextInputLayout"
+                android:theme="@style/CustomTextInputEditText">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etMobileNumber"

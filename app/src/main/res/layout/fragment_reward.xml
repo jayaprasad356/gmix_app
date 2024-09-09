@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+
+        <RelativeLayout
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginBottom="@dimen/_20sdp"
+            android:background="@color/white"
+            android:padding="@dimen/_10sdp"
+            android:id="@+id/rlToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <ImageView
+                android:id="@+id/ivstar"
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="@dimen/_30sdp"
+                android:background="@drawable/star_ic"
+                />
+
+            <LinearLayout
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_centerHorizontal="true"
+                android:orientation="vertical"
+                android:layout_toRightOf="@+id/ivstar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Your points"
+                    android:textSize="@dimen/_10sdp"
+                    android:textColor="?attr/textgrey"
+                    />
+
+                <TextView
+                    android:id="@+id/tvPoints"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textSize="@dimen/_14sdp"
+                    android:textColor="@color/green"
+                    />
+
+
+            </LinearLayout>
+
+
+
+
+        </RelativeLayout>
+
+
+
+
+        <TextView
+            android:layout_below="@+id/rlToolbar"
+            android:id="@+id/tvTitle"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:layout_marginHorizontal="@dimen/_5sdp"
+            android:layout_height="wrap_content"
+            android:text="Purchase using points"
+            android:textSize="@dimen/_14sdp"
+            android:textColor="?attr/myTextColor"
+            android:gravity="start"
+            android:fontFamily="@font/poppins_medium"
+            tools:ignore="MissingConstraints" />
+
+
+        <GridView
+            android:padding="@dimen/_5sdp"
+            android:layout_below="@+id/tvTitle"
+            android:id="@+id/gridView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:numColumns="2"
+            android:verticalSpacing="@dimen/_5sdp"
+            android:horizontalSpacing="@dimen/_5sdp"
+             />
+
+
+
+    </RelativeLayout>
+
+
+</FrameLayout>

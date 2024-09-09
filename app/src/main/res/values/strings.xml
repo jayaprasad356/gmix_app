@@ -45,7 +45,7 @@
     <string name="door_number">Door number</string>
     <string name="phone_number">Phone number</string>
     <string name="add_address">Add address</string>
-    <string name="pre_paid">Pre Paid</string>
+    <string name="pre_paid">Prepaid</string>
     <string name="pay_using_your_upi_payment_gpay_phonepe_paytm">Pay using your Upi payment Gpay, Phonepe, Paytm.</string>
     <string name="partial_cash_on_delivery">Partial Cash on delivery</string>
     <string name="partial_cash_on_delivery_allows_customers_to_pay_a_portion_online_and_the_rest_in_cash_upon_delivery">Partial Cash on Delivery allows customers to pay a portion online and the rest in cash upon delivery.</string>
@@ -56,6 +56,8 @@
     <string name="total">Total</string>
     <string name="confirm_order">Confirm Order</string>
     <string name="alternate_phone_number">Alternate phone number</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name (optional)</string>
 
 
 </resources>

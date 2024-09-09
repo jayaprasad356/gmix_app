@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fargment.SelectedAddressFragment">
+
+    <!-- Container for Address Header -->
+    <RelativeLayout
+        android:id="@+id/rlAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_10sdp">
+
+        <!-- Title Text for Select Address -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Select Address"
+            android:textColor="?attr/myTextColor"
+            android:textSize="@dimen/_14sdp"
+            android:layout_alignParentStart="true"/>
+
+        <!-- Button for Adding a New Address -->
+        <TextView
+            android:id="@+id/tvAddAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Create New"
+            android:layout_alignParentEnd="true"
+            android:textColor="@color/white"
+            android:background="@drawable/round_circle"
+            android:backgroundTint="@color/darkGreen"
+            android:paddingHorizontal="@dimen/_10sdp"
+            android:paddingVertical="@dimen/_5sdp"
+            android:textSize="@dimen/_10sdp" />
+    </RelativeLayout>
+
+    <!-- RecyclerView for Address List -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvAddresslist"
+        android:layout_below="@id/rlAddress"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_above="@id/btnPayment"
+        android:layout_weight="1"
+        android:paddingVertical="@dimen/_10sdp"
+        android:clipToPadding="false" />
+
+    <!-- Payment Button at the Bottom -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnPayment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/_10sdp"
+        android:background="@drawable/gradient_button"
+        android:fontFamily="@font/poppins_medium"
+        android:text="@string/payment"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_12sdp"
+        app:backgroundTint="@null" />
+
+</RelativeLayout>

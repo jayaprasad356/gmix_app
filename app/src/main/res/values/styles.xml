@@ -20,9 +20,6 @@
     </style>
 
     <!-- Custom style for CalendarView date custom text -->
-    <style name="CalenderViewDateCustomText" parent="Theme.AppCompat">
-        <item name="android:textColor">@drawable/calender_date_selector</item>
-    </style>
 
     <!-- Theme overlay for TextInputEditText Outlined style -->
     <style name="ThemeOverlay.AppTheme.TextInputEditText.Outlined" parent="">
@@ -33,14 +30,14 @@
     </style>
 
     <style name="CustomTextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-        <item name="boxStrokeColor">@color/textinput_box_stroke_color</item>
-        <item name="hintTextColor">@color/textinput_hint_text_color</item>
+        <item name="boxStrokeColor">@color/primary</item>
+        <item name="hintTextColor">@color/primary</item>
         <item name="colorControlActivated">@color/primary</item>
     </style>
 
     <!-- Custom overlay style for TextInputEditText -->
     <style name="CustomTextInputEditText" parent="ThemeOverlay.MaterialComponents.TextInputEditText.OutlinedBox">
-        <item name="colorAccent">@color/textinput_hint_text_color</item>
+        <item name="colorAccent">@color/colorPrimary</item>
         <item name="colorControlActivated">@color/primary</item>
 
     </style>
@@ -57,4 +54,12 @@
         <item name="android:colorForeground">#42221f1f
         </item>
     </style>
+
+
+        <style name="custom_rating_bar" parent="Widget.AppCompat.RatingBar">
+            <item name="android:progressDrawable">@drawable/custom_rating_bar_drawable</item>
+            <item name="android:minHeight">35dp</item>
+            <item name="android:maxHeight">35dp</item>
+        </style>
+
 </resources>

@@ -150,18 +150,25 @@
                 android:layout_marginStart="@dimen/_5sdp"
                 android:text="@string/order_placed"
                 android:textSize="@dimen/_10sdp"
-                android:textColor="?attr/textgrey"
-                android:fontFamily="@font/poppins_medium"/>
+                android:fontFamily="@font/poppins_bold"/>
+
+            <ImageView
+                android:layout_width="@dimen/_12sdp"
+                android:layout_height="@dimen/_14sdp"
+                android:background="@drawable/ic_map"
+                android:backgroundTint="@color/darkGreen"
+                android:layout_marginRight="@dimen/_2sdp"
+                />
 
             <TextView
-                android:id="@+id/tvDeliveryDate"
+                android:id="@+id/tvLiveTracking"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/aug_29_2021"
+                android:text="Live Tracking"
                 android:textSize="@dimen/_10sdp"
-                android:textColor="?attr/textgrey"
+                android:textColor="@color/darkGreen"
                 android:textAlignment="textEnd"
-                android:fontFamily="@font/poppins_medium"/>
+                android:fontFamily="@font/poppins_bold"/>
 
         </LinearLayout>
 

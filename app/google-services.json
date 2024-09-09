@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "155726097282",
-    "project_id": "gmart-8497c",
-    "storage_bucket": "gmart-8497c.appspot.com"
+    "project_number": "806292572831",
+    "project_id": "g-mix-app",
+    "storage_bucket": "g-mix-app.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:155726097282:android:f1aea5b8e0e2301fb43d9b",
+        "mobilesdk_app_id": "1:806292572831:android:a2ae976515709fbd14f0aa",
         "android_client_info": {
-          "package_name": "com.g_mix.app"
+          "package_name": "com.g_mix.gmw_app"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyD3kEIpqXw6XoUOSbDGZJac8sAUdRv6dbs"
+          "current_key": "AIzaSyCsHneKL-v7xqgTPv9z3i3tzfjyZDNl0WI"
         }
       ],
       "services": {

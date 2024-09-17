@@ -53,10 +53,18 @@ class SelectedAddressFragment : Fragment() {
         binding.tvAddAddress.setOnClickListener {
             val fm = requireActivity().supportFragmentManager
             val transaction = fm.beginTransaction()
-            transaction.replace(R.id.fragment_container, AddressFragment())
+
+            val bundle = Bundle()
+            bundle.putString("Address_in_fragment", "0")
+            val addressFragment = AddressFragment().apply {
+                arguments = bundle
+            }
+            transaction.replace(R.id.fragment_container, addressFragment)
             transaction.addToBackStack(null) // Optional: to add the transaction to the back stack
             transaction.commit()
         }
+
+
 
         productId = requireActivity().intent.getStringExtra("PRODUCT_ID").toString()
       itemName = requireActivity().intent.getStringExtra("ITEM_NAME").toString()
@@ -125,8 +133,8 @@ class SelectedAddressFragment : Fragment() {
                                 addressList.add(address)
                             }
 
-                            // Pass only addressList to the adapter
-                            val adapter = AddresslistAdapter(addressList) { selectedAddress ->
+                            // Pass the Activity and addressList to the adapter
+                            val adapter = AddresslistAdapter(requireActivity(), requireActivity().supportFragmentManager, addressList) { selectedAddress ->
                                 // When an address is selected, store its details for passing later
                                 name = selectedAddress.first_name + " " + selectedAddress.last_name
                                 mobile = selectedAddress.mobile.toString()

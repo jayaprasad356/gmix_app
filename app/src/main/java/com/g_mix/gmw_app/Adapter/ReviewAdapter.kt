@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.WebView
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -16,7 +17,7 @@ class ReviewAdapter(private val context: Context, private val reviewList: ArrayL
 
     // ViewHolder class to represent each item in the RecyclerView
     class ReviewViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val tvReview: TextView = itemView.findViewById(R.id.tvReview)
+        val tvReview: WebView = itemView.findViewById(R.id.tvReview)
         val ivReview1: ImageView = itemView.findViewById(R.id.ivReview1)
         val ivReview2: ImageView = itemView.findViewById(R.id.ivReview2)
         val ivReview3: ImageView = itemView.findViewById(R.id.ivReview3)
@@ -36,7 +37,10 @@ class ReviewAdapter(private val context: Context, private val reviewList: ArrayL
         val review = reviewList[position]
 
         // Set the review description
-        holder.tvReview.text = review.description
+//        holder.tvReview.text = review.description
+
+        review.description?.let { holder.tvReview.loadData(it, "text/html", "UTF-8") }
+
         holder.tvRating.text = review.ratings.toString()
 
         // Load images using Glide and handle visibility when image URLs are null or empty

@@ -180,6 +180,7 @@ class OtpActivity : BaseActivity() {
     }
 
     private fun resetCountdown() {
+        binding.btnResendOTP.isEnabled = true
         countDownTimer?.cancel()
     }
 

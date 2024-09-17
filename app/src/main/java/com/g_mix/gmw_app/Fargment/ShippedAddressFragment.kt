@@ -57,6 +57,11 @@ class ShippedAddressFragment : Fragment() {
         addressList()
 
 
+        binding.ivBack.setOnClickListener {
+            requireActivity().onBackPressed()
+        }
+
+
 
         productId = requireActivity().intent.getStringExtra("PRODUCT_ID").toString()
         itemName = requireActivity().intent.getStringExtra("ITEM_NAME").toString()
@@ -70,8 +75,11 @@ class ShippedAddressFragment : Fragment() {
         binding.btnAddAddress.setOnClickListener {
             val fragmentManager = parentFragmentManager
             val transaction = fragmentManager.beginTransaction()
-            val addressFragment = AddressFragment()
-
+            val bundle = Bundle()
+            bundle.putString("Address_in_fragment", "1")
+            val addressFragment = AddressFragment().apply {
+                arguments = bundle
+            }
             // Replace current fragment with MyOrderFragment
             transaction.replace(R.id.fragment_container, addressFragment)
             transaction.addToBackStack(null) // Optional: Add to backstack to allow going back
@@ -89,9 +97,9 @@ class ShippedAddressFragment : Fragment() {
 
     private fun addressList() {
         val params: MutableMap<String, String> = HashMap()
-        params[Constant.USER_ID] = session.getData(Constant.USER_ID) // Or another parameter based on your API
+        params[Constant.USER_ID] = session.getData(Constant.USER_ID) // Retrieve the user ID from session
 
-        activity?.let {
+        activity?.let { currentActivity -> // Use a local variable to reference the activity
             ApiConfig.RequestToVolley({ result, response ->
                 if (result) {
                     try {
@@ -101,7 +109,7 @@ class ShippedAddressFragment : Fragment() {
                             val g = Gson()
                             val addressList: ArrayList<Addresslist> = ArrayList()
 
-                            // Limiting to the first five items
+                            // Limit the list to the first five items
                             val limit = minOf(jsonArray.length(), 5)
                             for (i in 0 until limit) {
                                 val jsonObject1 = jsonArray.getJSONObject(i)
@@ -109,9 +117,9 @@ class ShippedAddressFragment : Fragment() {
                                 addressList.add(address)
                             }
 
-                            // Pass only addressList to the adapter
-                            val adapter = AddresslistAdapter(addressList) { selectedAddress ->
-                                // When an address is selected, store its details for passing later
+                            // Pass both the Activity and addressList to the adapter
+                            val adapter = AddresslistAdapter(requireActivity(), requireActivity().supportFragmentManager, addressList) { selectedAddress ->
+                                // When an address is selected, store its details for later use
                                 name = selectedAddress.first_name + " " + selectedAddress.last_name
                                 mobile = selectedAddress.mobile.toString()
                                 address = "${selectedAddress.door_no}, ${selectedAddress.street_name}, ${selectedAddress.city}, ${selectedAddress.state} - ${selectedAddress.pincode}"
@@ -120,14 +128,18 @@ class ShippedAddressFragment : Fragment() {
                             binding.rvAddresslist.adapter = adapter
 
                         } else {
-                            // Handle error
+                            // Handle API error response
+                            Toast.makeText(currentActivity, "Failed to fetch address list", Toast.LENGTH_SHORT).show()
                         }
                     } catch (e: JSONException) {
                         e.printStackTrace()
-                        Toast.makeText(activity, e.toString(), Toast.LENGTH_SHORT).show()
+                        Toast.makeText(currentActivity, e.toString(), Toast.LENGTH_SHORT).show()
                     }
+                } else {
+                    // Handle network or request failure
+                    Toast.makeText(currentActivity, "Error in network request", Toast.LENGTH_SHORT).show()
                 }
-            }, it, Constant.MY_ADDRESS_LIST, params, true)
+            }, currentActivity, Constant.MY_ADDRESS_LIST, params, true)
         }
     }
 

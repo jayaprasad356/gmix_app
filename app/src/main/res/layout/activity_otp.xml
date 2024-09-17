@@ -98,6 +98,7 @@
             android:layout_marginTop="@dimen/_5sdp"/>
 
         <TextView
+            android:enabled="false"
             android:id="@+id/btnResendOTP"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -2,8 +2,34 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:padding="@dimen/_10sdp"
+    android:background="@color/white"
     android:layout_height="wrap_content"
     android:orientation="vertical">
+
+    <RelativeLayout
+        android:gravity="end"
+        android:id="@+id/rlUpdate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageButton
+            android:layout_marginRight="@dimen/_10sdp"
+            android:id="@+id/ivEdit"
+            android:layout_width="@dimen/_24sdp"
+            android:layout_height="@dimen/_24sdp"
+            android:background="@drawable/ic_edit"
+            />
+
+        <ImageButton
+            android:layout_toRightOf="@+id/ivEdit"
+            android:id="@+id/ivDelete"
+            android:layout_width="@dimen/_24sdp"
+            android:layout_height="@dimen/_24sdp"
+            android:background="@drawable/ic_delete"
+            />
+
+
+    </RelativeLayout>
 
 
     <LinearLayout
@@ -12,6 +38,9 @@
         android:layout_height="wrap_content"
         android:baselineAligned="false"
         android:orientation="horizontal">
+
+
+
 
         <LinearLayout
             android:id="@+id/lytImgPayUpi"
@@ -66,6 +95,7 @@
         </LinearLayout>
 
         <RadioButton
+            android:layout_marginTop="@dimen/_14sdp"
             android:id="@+id/rb"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

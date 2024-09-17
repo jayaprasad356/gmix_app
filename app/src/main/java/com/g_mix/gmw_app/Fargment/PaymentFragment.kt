@@ -13,6 +13,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.g_mix.gmw_app.R
+import com.g_mix.gmw_app.activity.CartActivity
 import com.g_mix.gmw_app.activity.MainActivity
 import com.g_mix.gmw_app.databinding.FragmentPaymentBinding
 import com.g_mix.gmw_app.helper.ApiConfig
@@ -60,7 +61,8 @@ class PaymentFragment : Fragment() {
             val address = bundle.getString("ADDRESS")
             addressId = bundle.getString("ADDRESS_ID")
 
-            var quantity = 1
+
+            var quantity =  (activity as CartActivity).binding.tvQuantityVal.text.toString().toInt()
             totalQuantityPrice = itemPrice * quantity
 
             val deliveryCharges = 0.0
@@ -69,7 +71,7 @@ class PaymentFragment : Fragment() {
             // Set data to views
 //            view.findViewById<TextView>(R.id.tvItemName).text = itemName
 //            view.findViewById<TextView>(R.id.tvItemWeight).text = itemWeight
-            view.findViewById<TextView>(R.id.tvPrice).text = "₹$itemPrice"
+            view.findViewById<TextView>(R.id.tvPrice).text = "₹$totalQuantityPrice"
             view.findViewById<TextView>(R.id.tvDeliveryCharges).text = "₹$deliveryCharges"
             view.findViewById<TextView>(R.id.tvTotal).text = "₹$totalPrice"
             view.findViewById<TextView>(R.id.tvName).text = userName
@@ -93,19 +95,15 @@ class PaymentFragment : Fragment() {
         rdbSelectCashOn = view.findViewById(R.id.rdbSelectCashOn)
         rdbSelectUPI.isChecked = true
 
+
         // Set listeners for RadioButtons
         rdbSelectUPI.setOnClickListener { onRadioButtonClicked(rdbSelectUPI) }
         rdbSelectCashOn.setOnClickListener { onRadioButtonClicked(rdbSelectCashOn) }
 
-
+        selectedPaymentMode = "Prepaid"
 
         binding.btnConfirm.setOnClickListener {
-            if (selectedPaymentMode.isNotEmpty()) {
-                placeOrder()
-            } else {
-                Toast.makeText(requireActivity(), "Please select your payment method.", Toast.LENGTH_SHORT)
-                    .show()
-            }
+            placeOrder()
         }
 
         return view
@@ -127,7 +125,7 @@ class PaymentFragment : Fragment() {
 
     private fun updatePrice(deliveryCharges: Double) {
         val totalPrice = totalQuantityPrice + deliveryCharges
-        binding.tvPrice.text = "₹$itemPrice"
+        binding.tvPrice.text = "₹$totalQuantityPrice"
         binding.tvDeliveryCharges.text = "₹$deliveryCharges"
         binding.tvTotal.text = "₹$totalPrice"
     }
@@ -150,7 +148,8 @@ class PaymentFragment : Fragment() {
             Constant.USER_ID to session.getData(Constant.USER_ID),
             Constant.ADDRESS_ID to addressId.toString(),
             Constant.PRODUCT_ID to productId.toString(),
-            Constant.PAYMENT_MODE to selectedPaymentMode
+            Constant.PAYMENT_MODE to selectedPaymentMode,
+            Constant.QUANTITY to (activity as CartActivity).binding.tvQuantityVal.text.toString()
         )
     }
 

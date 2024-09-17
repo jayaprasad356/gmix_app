@@ -58,6 +58,7 @@
     <string name="alternate_phone_number">Alternate phone number</string>
     <string name="first_name">First Name</string>
     <string name="last_name">Last Name (optional)</string>
+    <string name="refund_policy">Refund Policy</string>
 
 
 </resources>

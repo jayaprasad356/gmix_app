@@ -1,24 +1,18 @@
-package com.g_mix.gmw_app.fragment
+package com.g_mix.gmw_app.Fargment
 
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
 import android.widget.Spinner
-import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.Fragment
-import com.bumptech.glide.Glide
-import com.g_mix.gmw_app.Fargment.SelectedAddressFragment
-import com.g_mix.gmw_app.Fargment.ShippedAddressFragment
 import com.g_mix.gmw_app.R
-import com.g_mix.gmw_app.databinding.FragmentAddressBinding
-import com.g_mix.gmw_app.databinding.FragmentPaymentBinding
+import com.g_mix.gmw_app.databinding.FragmentEditAddressBinding
+import com.g_mix.gmw_app.databinding.FragmentShippedAddressBinding
 import com.g_mix.gmw_app.helper.ApiConfig
 import com.g_mix.gmw_app.helper.Constant
 import com.g_mix.gmw_app.helper.Session
@@ -28,36 +22,29 @@ import org.json.JSONException
 import org.json.JSONObject
 import java.util.HashMap
 
-class AddressFragment : Fragment() {
 
-    lateinit var binding: FragmentAddressBinding
+class EditAddressFragment : Fragment() {
+
+
+
+    lateinit var binding: FragmentEditAddressBinding
     lateinit var session: Session
-    private var isLoading = false
-    private var Address_in_fragment: String? = null
+    private var addressId: String? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentAddressBinding.inflate(inflater, container, false)
+        // Inflate the layout for this fragment
+        binding = FragmentEditAddressBinding.inflate(inflater, container, false)
         session = Session(requireActivity())
 
 
 
-        userDetails()
 
-
-        arguments?.let { bundle ->
-             Address_in_fragment = bundle.getString("Address_in_fragment")
-          //  Toast.makeText(activity, Address_in_fragment, Toast.LENGTH_SHORT).show()
-            if (Address_in_fragment == "0"){
-                binding.rlToolbar.visibility=View.GONE
-            }
-            else if (Address_in_fragment == "1"){
-                binding.rlToolbar.visibility=View.VISIBLE
-            }
-        }
-
+        // Retrieve the passed value using arguments
+         addressId = arguments?.getString("address_id")
+        Addressdetails(addressId)
 
 
         binding.etPincode.addTextChangedListener(object : TextWatcher {
@@ -75,9 +62,8 @@ class AddressFragment : Fragment() {
         binding.btnAddAddrsss.setOnClickListener {
             addAddress()
         }
-
         binding.ivBack.setOnClickListener {
-            activity!!.onBackPressed()
+            requireActivity().onBackPressed()
         }
 
 
@@ -121,7 +107,7 @@ class AddressFragment : Fragment() {
             )
             ApiConfig.RequestToVolley({ result, response ->
                 handleProfileResponse(result, response)
-            }, requireActivity(), Constant.ADD_ADDRESS, params, true, 1)
+            }, requireActivity(), Constant.UPDATE_ADDRESS, params, true, 1)
         }
     }
 
@@ -164,6 +150,8 @@ class AddressFragment : Fragment() {
         return true
     }
 
+
+
     private fun buildProfileParams(
         name: String, lastName: String, mobileNumber: String, alternateMobile: String,
         street: String, doorNumber: String, landmark: String, pincode: String,
@@ -171,6 +159,7 @@ class AddressFragment : Fragment() {
     ): HashMap<String, String> {
         return hashMapOf(
             Constant.USER_ID to session.getData(Constant.USER_ID),
+            Constant.ADDRESS_ID to addressId.toString(),
             Constant.FIRST_NAME to name,
             Constant.LAST_NAME to lastName,
             Constant.MOBILE to mobileNumber,
@@ -193,29 +182,7 @@ class AddressFragment : Fragment() {
                     Toast.makeText(activity, jsonObject.getString("message"), Toast.LENGTH_SHORT).show()
                     // Handle success, navigate to another fragment or activity if needed
 
-
-                    if (Address_in_fragment == "1") {
-//                        val fm = requireActivity().supportFragmentManager
-//                        val transaction = fm.beginTransaction()
-//                        transaction.replace(R.id.fragment_container, ShippedAddressFragment())
-//                        transaction.addToBackStack(null) // Optional: to add the transaction to the back stack
-//                        transaction.commit()
                         requireActivity().onBackPressed()
-
-                        // Pop the current fragment from the back stack to "finish" it
-                    } else if (Address_in_fragment == "0") {
-//                        val fm = requireActivity().supportFragmentManager
-//                        val transaction = fm.beginTransaction()
-//                        transaction.replace(R.id.fragment_container, SelectedAddressFragment())
-//                        transaction.addToBackStack(null) // Optional: to add the transaction to the back stack
-//                        transaction.commit()
-
-                        requireActivity().onBackPressed()
-
-                        // Pop the current fragment from the back stack to "finish" it
-                    }
-
-
 
                 } else {
                     Toast.makeText(activity, jsonObject.getString("message"), Toast.LENGTH_SHORT).show()
@@ -287,11 +254,64 @@ class AddressFragment : Fragment() {
         }
     }
 
-//    private fun getStateIndex(state: String): Int {
-//        // Retrieve the spinner adapter and fetch the position of the state dynamically
-//        val adapter = binding.spinnerStates.adapter as ArrayAdapter<String>
-//        return adapter.getPosition(state)
-//    }
+
+    private fun Addressdetails(addressId: String?) {
+        val params = HashMap<String, String>()
+        params[Constant.USER_ID] = session.getData(Constant.USER_ID)
+        params[Constant.ADDRESS_ID] = addressId.toString()
+        ApiConfig.RequestToVolley({ result, response ->
+            if (result) {
+                try {
+                    val jsonObject = JSONObject(response)
+                    if (jsonObject.getBoolean(Constant.SUCCESS)) {
+                        val jsonArray = jsonObject.getJSONArray(Constant.DATA)
+
+                        // Assuming you want to set the first address in the binding
+                        if (jsonArray.length() > 0) {
+                            val addressObject = jsonArray.getJSONObject(0)
+
+                            // Extract the data from the first address object
+                            val name = addressObject.getString("first_name").toString()
+                            val lastName = addressObject.getString("last_name").toString()
+                            val mobile = addressObject.getString("mobile").toString()
+                            val alternateMobile = addressObject.getString("alternate_mobile").toString()
+                            val doorNumber = addressObject.getString("door_no").toString()
+                            val streetName = addressObject.getString("street_name").toString()
+                            val city = addressObject.getString("city").toString()
+                            val pincode = addressObject.getString("pincode").toString()
+                            val state = addressObject.getString("state").toString()
+                            //    val landmark = addressObject.getString("landmark").toString()
+
+                            // Construct the full address string
+                            val fullAddress = "$doorNumber, $streetName, $city, $state - $pincode"
+
+                            // Set the data in your binding
+                            binding.etFirstName.setText(name)
+                            binding.etLastName.setText(lastName)
+                            binding.etMobileNumber.setText(mobile)
+                            binding.etAlternateMobile.setText(alternateMobile)
+                            binding.etDoorNumber.setText(doorNumber)
+                            binding.etStreet.setText(streetName)
+                            binding.etCity.setText(city)
+                            binding.etPincode.setText(pincode)
+                            binding.spinnerStates.setText(state)
+                            binding.etLandmark.setText("")
+
+                            // Additional setting if needed
+                            // binding.etAlternateMobile.setText(alternateMobile)
+                            // binding.etDoorNumber.setText(doorNumber)
+                        }
+                    } else {
+                        // Toast.makeText(this, jsonObject.getString(Constant.MESSAGE), Toast.LENGTH_SHORT).show()
+                    }
+                } catch (e: JSONException) {
+                    e.printStackTrace()
+                }
+            } else {
+                //  Toast.makeText(this, "Failed to retrieve addresses", Toast.LENGTH_SHORT).show()
+            }
+        }, requireActivity(), Constant.ADDRESS_DETAILS, params, true)
+    }
 
 
 }

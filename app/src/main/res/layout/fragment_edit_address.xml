@@ -6,44 +6,39 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
     <RelativeLayout
         android:id="@+id/rlToolbar"
-        android:padding="@dimen/_20sdp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_20sdp">
 
         <ImageButton
-            android:backgroundTint="?attr/iconColor"
-            android:layout_centerVertical="true"
             android:id="@+id/ivBack"
             android:layout_width="@dimen/_18sdp"
             android:layout_height="@dimen/_18sdp"
+            android:layout_centerVertical="true"
             android:background="@drawable/arrow_left"
-            />
+            android:backgroundTint="?attr/iconColor" />
 
         <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/_14sdp"
             android:layout_toRightOf="@+id/ivBack"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Shipping Address"
-            android:textSize="@dimen/_14sdp"
-            android:gravity="center"
-            android:textColor="?attr/myTextColor"
             android:fontFamily="@font/poppins_medium"
-            />
+            android:text="Customer Support"
+            android:textColor="?attr/myTextColor"
+            android:textSize="@dimen/_14sdp"
+            android:visibility="gone" />
 
 
     </RelativeLayout>
 
-
-
     <androidx.core.widget.NestedScrollView
-        android:layout_below="@+id/rlToolbar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@+id/rlToolbar"
         android:background="?attr/titleBG">
 
         <LinearLayout
@@ -64,21 +59,12 @@
 
 
 
-
-            <TextView
-                android:layout_marginHorizontal="@dimen/_8sdp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_medium"
-                android:text="First Name"
-                android:textColor="?attr/myTextColor"
-                android:textSize="@dimen/_10sdp" />
-
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cvFirstname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/_5sdp"
+                android:layout_marginVertical="@dimen/_3sdp"
                 app:cardCornerRadius="@dimen/_3sdp"
                 app:cardUseCompatPadding="true"
                 app:strokeColor="@android:color/transparent"
@@ -114,22 +100,12 @@
                 </RelativeLayout>
             </com.google.android.material.card.MaterialCardView>
 
-
-            <TextView
-                android:layout_marginTop="@dimen/_10sdp"
-                android:layout_marginHorizontal="@dimen/_8sdp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_medium"
-                android:text="Last Name"
-                android:textColor="?attr/myTextColor"
-                android:textSize="@dimen/_10sdp" />
-
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cvLastname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/_5sdp"
+                android:layout_marginVertical="@dimen/_3sdp"
                 app:cardCornerRadius="@dimen/_3sdp"
                 app:cardUseCompatPadding="true"
                 app:strokeColor="@android:color/transparent"
@@ -168,23 +144,12 @@
 
             </com.google.android.material.card.MaterialCardView>
 
-
-            <TextView
-                android:layout_marginTop="@dimen/_10sdp"
-                android:layout_marginHorizontal="@dimen/_8sdp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_medium"
-                android:text="Phone Number"
-                android:textColor="?attr/myTextColor"
-                android:textSize="@dimen/_10sdp" />
-
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cvMobile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/_5sdp"
-              
+                android:layout_marginVertical="@dimen/_3sdp"
                 app:cardCornerRadius="@dimen/_3sdp"
                 app:cardUseCompatPadding="true"
                 app:strokeColor="@android:color/transparent"
@@ -223,23 +188,12 @@
 
             </com.google.android.material.card.MaterialCardView>
 
-
-            <TextView
-                android:layout_marginTop="@dimen/_10sdp"
-                android:layout_marginHorizontal="@dimen/_8sdp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_medium"
-                android:text="Alternate Phone Number"
-                android:textColor="?attr/myTextColor"
-                android:textSize="@dimen/_10sdp" />
-
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cvAlternateMobile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/_5sdp"
-              
+                android:layout_marginVertical="@dimen/_3sdp"
                 app:cardCornerRadius="@dimen/_3sdp"
                 app:cardUseCompatPadding="true"
                 app:strokeColor="@android:color/transparent"
@@ -278,22 +232,12 @@
 
             </com.google.android.material.card.MaterialCardView>
 
-
-            <TextView
-                android:layout_marginTop="@dimen/_10sdp"
-                android:layout_marginHorizontal="@dimen/_8sdp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_medium"
-                android:text="Pin Code"
-                android:textColor="?attr/myTextColor"
-                android:textSize="@dimen/_10sdp" />
-
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cvPincode"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/_5sdp"
+                android:layout_marginVertical="@dimen/_3sdp"
                 app:cardCornerRadius="@dimen/_3sdp"
                 app:cardUseCompatPadding="true"
                 app:strokeColor="@android:color/transparent"
@@ -316,7 +260,7 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etPincode"
-                        android:layout_width="316dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="@dimen/_10sdp"
                         android:layout_marginStart="@dimen/_35sdp"
@@ -333,24 +277,12 @@
             </com.google.android.material.card.MaterialCardView>
 
 
-
-            <TextView
-                android:layout_marginTop="@dimen/_10sdp"
-                android:layout_marginHorizontal="@dimen/_8sdp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_medium"
-                android:text="Door Number"
-                android:textColor="?attr/myTextColor"
-                android:textSize="@dimen/_10sdp" />
-
-
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cvDoorNumber"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/_5sdp"
-              
+                android:layout_marginVertical="@dimen/_3sdp"
                 app:cardUseCompatPadding="true"
                 app:strokeColor="@android:color/transparent"
                 app:strokeWidth="@dimen/_2sdp">
@@ -390,24 +322,12 @@
 
             </com.google.android.material.card.MaterialCardView>
 
-
-
-            <TextView
-                android:layout_marginTop="@dimen/_10sdp"
-                android:layout_marginHorizontal="@dimen/_8sdp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_medium"
-                android:text="Street Name"
-                android:textColor="?attr/myTextColor"
-                android:textSize="@dimen/_10sdp" />
-
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cvStreet"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/_5sdp"
-              
+                android:layout_marginVertical="@dimen/_3sdp"
                 app:cardCornerRadius="@dimen/_3sdp"
                 app:cardUseCompatPadding="true"
                 app:strokeColor="@android:color/transparent"
@@ -447,24 +367,12 @@
 
             </com.google.android.material.card.MaterialCardView>
 
-
-
-            <TextView
-                android:layout_marginTop="@dimen/_10sdp"
-                android:layout_marginHorizontal="@dimen/_8sdp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_medium"
-                android:text="City"
-                android:textColor="?attr/myTextColor"
-                android:textSize="@dimen/_10sdp" />
-
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cvCity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/_5sdp"
-              
+                android:layout_marginVertical="@dimen/_3sdp"
                 app:cardCornerRadius="@dimen/_3sdp"
                 app:cardUseCompatPadding="true"
                 app:strokeColor="@android:color/transparent"
@@ -485,7 +393,6 @@
                         android:src="@drawable/city_ic" />
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:enabled="false"
                         android:id="@+id/etCity"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -505,22 +412,11 @@
 
             </com.google.android.material.card.MaterialCardView>
 
-
-            <TextView
-                android:layout_marginTop="@dimen/_10sdp"
-                android:layout_marginHorizontal="@dimen/_8sdp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_medium"
-                android:text="State"
-                android:textColor="?attr/myTextColor"
-                android:textSize="@dimen/_10sdp" />
-
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/_5sdp"
-              
+                android:layout_marginVertical="@dimen/_3sdp"
                 app:cardCornerRadius="@dimen/_3sdp"
                 app:cardUseCompatPadding="true"
                 app:strokeColor="@android:color/transparent"
@@ -560,22 +456,12 @@
             </com.google.android.material.card.MaterialCardView>
 
 
-            <TextView
-                android:layout_marginTop="@dimen/_10sdp"
-                android:layout_marginHorizontal="@dimen/_8sdp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_medium"
-                android:text="Landmark (optional)"
-                android:textColor="?attr/myTextColor"
-                android:textSize="@dimen/_10sdp" />
-
-
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cvLandmark"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/_5sdp"
+                android:layout_marginVertical="@dimen/_3sdp"
                 app:cardCornerRadius="@dimen/_3sdp"
                 app:cardUseCompatPadding="true"
                 app:strokeColor="@android:color/transparent"

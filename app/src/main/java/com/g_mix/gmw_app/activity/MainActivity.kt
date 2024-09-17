@@ -25,6 +25,11 @@ import com.google.android.gms.location.LocationServices
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationBarView
+import com.onesignal.OneSignal
+import com.onesignal.debug.LogLevel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import org.json.JSONException
 import org.json.JSONObject
 import java.util.HashMap
@@ -44,6 +49,8 @@ class MainActivity : BaseActivity(), NavigationBarView.OnItemSelectedListener {
     private val myProfileFragment = MyProfileFragment()
 
     private lateinit var mFusedLocationClient: FusedLocationProviderClient
+    val ONESIGNAL_APP_ID = "a36f8a79-e68f-47f1-bdda-e720b95c8652"
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -65,11 +72,12 @@ class MainActivity : BaseActivity(), NavigationBarView.OnItemSelectedListener {
         }
 
 
-        binding.btnLogout.setOnClickListener {
-            showLogoutConfirmationDialog()
+//        binding.btnLogout.setOnClickListener {
+//            showLogoutConfirmationDialog()
+//
+//        }
 
-        }
-        binding.tvMobileNumber.text = session.getData(Constant.MOBILE)
+     //   binding.tvMobileNumber.text = session.getData(Constant.MOBILE)
 
         val fabWhatsapp: FloatingActionButton = findViewById(R.id.fabWhatsapp)
         fabWhatsapp.setOnClickListener {
@@ -124,6 +132,7 @@ class MainActivity : BaseActivity(), NavigationBarView.OnItemSelectedListener {
         bottomNavigationView = binding.bottomNavigationView
         bottomNavigationView.setOnItemSelectedListener(this)
 
+        initializeOneSignal()
         // Set default fragment
         fm.beginTransaction().replace(R.id.fragment_container, homeFragment).commit()
         // Set default selected icon
@@ -161,6 +170,17 @@ class MainActivity : BaseActivity(), NavigationBarView.OnItemSelectedListener {
         transaction.commit()
         return true
     }
+
+
+    private fun initializeOneSignal() {
+        OneSignal.Debug.logLevel = LogLevel.VERBOSE
+        OneSignal.initWithContext(this, ONESIGNAL_APP_ID)
+        CoroutineScope(Dispatchers.IO).launch {
+            OneSignal.Notifications.requestPermission(false)
+        }
+        OneSignal.login("${session.getData(Constant.MOBILE)}")
+    }
+
 
     private fun userdetails() {
         val params = HashMap<String, String>()

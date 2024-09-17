@@ -5,6 +5,8 @@
 
     <!-- Base theme for light mode -->
     <style name="Theme.G_mix_app" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:colorPrimary">@color/white</item>
+
         <item name="colorPrimaryVariant">@color/primary</item>
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
@@ -24,6 +26,8 @@
 
     <!-- Theme for dark mode -->
     <style name="Theme.G_mix_app.Dark" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:colorPrimary">@color/white</item>
+
         <item name="colorPrimaryVariant">@color/primary</item>
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>

@@ -40,21 +40,19 @@
 
 
 
-    <RelativeLayout
-        android:layout_below="@+id/rlToolbar"
-        android:padding="@dimen/_10sdp"
+
+
+    <ScrollView
         android:background="@drawable/topcorner"
         android:layout_above="@+id/rlBottom"
+        android:layout_below="@+id/rlToolbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
-
-        <androidx.core.widget.NestedScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-
-
+    <RelativeLayout
+        android:padding="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
 
 
@@ -234,22 +232,21 @@
 
             <LinearLayout
                 android:id="@+id/llDiscription"
-                android:visibility="gone"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent">
 
                 <WebView
                     android:id="@+id/wvDiscription"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins_medium"
-                    android:textColor="?attr/myTextColor" />
+                    />
 
 
             </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
+                android:visibility="gone"
                 android:id="@+id/rvReview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
@@ -260,7 +257,6 @@
 
 
 
-        </androidx.core.widget.NestedScrollView>
 
 
 
@@ -268,6 +264,8 @@
 
     </RelativeLayout>
 
+
+    </ScrollView>
 
     <RelativeLayout
         android:id="@+id/rlBottom"

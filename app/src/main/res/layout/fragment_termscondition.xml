@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fargment.SelectedAddressFragment">
-
+    tools:context=".Fargment.TermsconditionFragment">
 
     <RelativeLayout
         android:id="@+id/rlToolbar"
@@ -29,7 +26,7 @@
             android:layout_toRightOf="@+id/ivBack"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Shipping Address"
+            android:text="Terms &amp; Conditions"
             android:textSize="@dimen/_14sdp"
             android:gravity="center"
             android:textColor="?attr/myTextColor"
@@ -39,33 +36,14 @@
 
     </RelativeLayout>
 
-
-    <!-- Container for Address Header -->
-
-    <!-- RecyclerView for Address List -->
-    <androidx.recyclerview.widget.RecyclerView
+    <WebView
         android:layout_below="@+id/rlToolbar"
-        android:id="@+id/rvAddresslist"
+        android:id="@+id/wvTerms"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/titleBG"
-        android:layout_above="@id/btnAddAddress"
-        android:layout_weight="1"
-        android:clipToPadding="false" />
-
-    <!-- Payment Button at the Bottom -->
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnAddAddress"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_margin="@dimen/_10sdp"
-        android:background="@drawable/gradient_button"
         android:fontFamily="@font/poppins_medium"
-        android:text="@string/add_address"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:textSize="@dimen/_12sdp"
-        app:backgroundTint="@null" />
+        android:textColor="?attr/myTextColor" />
+
+
 
 </RelativeLayout>

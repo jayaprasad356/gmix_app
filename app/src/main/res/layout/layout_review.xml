@@ -46,16 +46,12 @@
 
 
 
-    <TextView
+    <WebView
         android:layout_marginVertical="@dimen/_8sdp"
         android:id="@+id/tvReview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="Awesome Product, taste is too good"
-        android:textSize="@dimen/_10sdp"
-        android:textColor="?attr/textgrey"
-        android:fontFamily="@font/poppins_medium"/>
+ />
 
 
     <LinearLayout

@@ -2,8 +2,8 @@ package com.g_mix.gmw_app.helper
 
 object Constant {
     const val AppPlayStoreUrl: String = ""
-   // const val MainBaseUrl: String = "https://gmix.graymatterworks.com/"
-    const val MainBaseUrl: String = "https://testgmix.graymatterworks.com/"
+   const val MainBaseUrl: String = "https://gmix.graymatterworks.com/"
+   // const val MainBaseUrl: String = "https://testgmix.graymatterworks.com/"
 
     const val BaseUrl: String = MainBaseUrl + "api/"
 
@@ -17,9 +17,15 @@ object Constant {
     const val REWARD_LIST: String = BaseUrl + "reward_product_list"
     const val PLACE_ORDER: String = BaseUrl + "place_order"
     const val MY_ADDRESS_LIST: String = BaseUrl + "my_address_list"
+    const val ADDRESS_DETAILS: String = BaseUrl + "address_details"
     const val REVIEWS_LIST: String = BaseUrl + "reviews_list"
+    const val DELETE_ADDRESS: String = BaseUrl + "delete_address"
+    const val UPDATE_ADDRESS: String = BaseUrl + "update_address"
     const val PINCODE_URL: String = BaseUrl + "pincode"
     const val SETTING: String = BaseUrl + "settings_list"
+    const val PRIVACY_POLICY: String = BaseUrl + "privacy_policy"
+    const val REFUND_POLICY: String = BaseUrl + "refund_policy"
+    const val TERMS_CONDITION: String = BaseUrl + "terms_conditions"
     val APPUPDATE: String = BaseUrl + "appsettings_list"
 
 

@@ -1,16 +1,16 @@
 package com.g_mix.gmw_app.Fargment
 
+import android.app.AlertDialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import com.g_mix.gmw_app.Fragment.MyOrderFragment
 import com.g_mix.gmw_app.R
 import com.g_mix.gmw_app.activity.MainActivity
 import com.g_mix.gmw_app.databinding.FragmentMyProfileBinding
-import com.g_mix.gmw_app.databinding.FragmentSelectedAddressBinding
-import com.g_mix.gmw_app.fragment.AddressFragment
 import com.g_mix.gmw_app.helper.Constant
 import com.g_mix.gmw_app.helper.Session
 
@@ -43,7 +43,81 @@ class MyProfileFragment : Fragment() {
             openShippingAddressFragment()
         }
 
+        binding.rlPrivacyPolicy.setOnClickListener{
+            openPrivacyPolicyFragment()
+        }
+
+        binding.rlTermsCondition.setOnClickListener{
+            openTermsConditionFragment()
+        }
+
+        binding.rlLogout.setOnClickListener{
+            showLogoutConfirmationDialog()
+        }
+
+        binding.rlRefundPolicy.setOnClickListener{
+            openRefundFragment()
+        }
+
+
+
         return binding.root
+    }
+
+    private fun openRefundFragment() {
+        val fragmentManager = parentFragmentManager
+        val transaction = fragmentManager.beginTransaction()
+        val RefundFragment = RefundFragment()
+
+        // Replace current fragment with MyOrderFragment
+        transaction.replace(R.id.fragment_container, RefundFragment)
+        transaction.addToBackStack(null) // Optional: Add to backstack to allow going back
+        transaction.commit()
+    }
+
+
+    private fun showLogoutConfirmationDialog() {
+        val dialogBuilder = AlertDialog.Builder(activity)
+            .setMessage("Are you sure you want to logout?")
+            .setCancelable(true)
+            .setPositiveButton("Logout") { dialog, _ ->
+                // Perform logout action
+                session.logoutUser(activity)
+                dialog.dismiss()
+            }
+            .setNegativeButton("Cancel") { dialog, _ ->
+                dialog.dismiss()
+            }
+            .create()
+
+        dialogBuilder.show()
+
+        // Change button text colors
+        dialogBuilder.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(ContextCompat.getColor(requireActivity(), R.color.primary))
+        dialogBuilder.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(ContextCompat.getColor(requireActivity(), R.color.text_grey))
+    }
+
+
+    private fun openTermsConditionFragment() {
+        val fragmentManager = parentFragmentManager
+        val transaction = fragmentManager.beginTransaction()
+        val termsconditionFragment = TermsconditionFragment()
+
+        // Replace current fragment with MyOrderFragment
+        transaction.replace(R.id.fragment_container, termsconditionFragment)
+        transaction.addToBackStack(null) // Optional: Add to backstack to allow going back
+        transaction.commit()
+    }
+
+    private fun openPrivacyPolicyFragment() {
+        val fragmentManager = parentFragmentManager
+        val transaction = fragmentManager.beginTransaction()
+        val privacypolicyFragment = PrivacypolicyFragment()
+
+        // Replace current fragment with MyOrderFragment
+        transaction.replace(R.id.fragment_container, privacypolicyFragment)
+        transaction.addToBackStack(null) // Optional: Add to backstack to allow going back
+        transaction.commit()
     }
 
     private fun openMyOrdersFragment() {
@@ -66,6 +140,8 @@ class MyProfileFragment : Fragment() {
         transaction.addToBackStack(null) // Optional: Add to backstack to allow going back
         transaction.commit()
     }
+
+
 
 
 }

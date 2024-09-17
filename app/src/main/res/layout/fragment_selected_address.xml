@@ -62,7 +62,7 @@
         android:layout_margin="@dimen/_10sdp"
         android:background="@drawable/gradient_button"
         android:fontFamily="@font/poppins_medium"
-        android:text="@string/payment"
+        android:text="Next"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="@dimen/_12sdp"

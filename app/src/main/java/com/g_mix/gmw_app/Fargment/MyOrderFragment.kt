@@ -43,6 +43,9 @@ class MyOrderFragment : Fragment() {
 
 
 
+        binding.ivBack.setOnClickListener {
+            activity.onBackPressed()
+        }
 
 
         myOrderAdapter = MyOrderAdapter(activity, orderData)

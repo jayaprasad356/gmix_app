@@ -41,10 +41,7 @@ class SplashActivity : Activity() {
 
     }
 
-    override fun onResume() {
-        setupViews()
-        super.onResume()
-    }
+
 
     private fun setupViews() {
         try {

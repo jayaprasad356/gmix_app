@@ -51,7 +51,7 @@ class MyOrderAdapter(private val context: Context, private val orderData: ArrayL
         viewHolder.tvProductName.text = "Product name: " + order.product_name + "(" + order.measurement +" "+ order.unit+" )"
         viewHolder.tvOrderId.text = "Order id #" + order.id.toString()
         viewHolder.tvPlacedDate.text = "Estimate deliver date : " + order.est_delivery_date
-        viewHolder.tvQuantityVal.text = "1"  // Replace with actual quantity if available
+        viewHolder.tvQuantityVal.text = "${order.quantity}"  // Replace with actual quantity if available
         viewHolder.tvPrice.text = "₹ " + order.total_price
 //        viewHolder.tvDeliveryDate.text = order.est_delivery_date
         viewHolder.tvDeliveryStatus.text = order.status

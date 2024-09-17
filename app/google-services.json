@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "976003250543",
+    "project_id": "g-mix-app-80e9c",
+    "storage_bucket": "g-mix-app-80e9c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:976003250543:android:258c45ff8ff3d75253509a",
+        "android_client_info": {
+          "package_name": "com.g_mix.gmw_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDCcVr2yT8NWm8303Snw6f3CNBm-FK0Ybg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

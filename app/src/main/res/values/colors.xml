@@ -39,4 +39,9 @@
         <color name="unfocused_color">#43000000</color>
 
 
+    <color name="selectedDotColor">#FFFFFF</color> <!-- White for selected dot -->
+    <color name="unselectedDotColor">#808080</color> <!-- Grey for unselected dot -->
+
+
+
 </resources>

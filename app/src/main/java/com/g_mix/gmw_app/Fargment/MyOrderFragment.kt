@@ -8,14 +8,18 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.g_mix.gmw_app.Adapter.AddresslistAdapter
 import com.g_mix.gmw_app.activity.MainActivity
 import com.g_mix.gmw_app.Adapter.MyOrderAdapter
+import com.g_mix.gmw_app.Model.Addresslist
 import com.g_mix.gmw_app.Model.OrderData
 import com.g_mix.gmw_app.helper.Session
 import com.g_mix.gmw_app.databinding.FragmentMyOrderBinding
 import com.g_mix.gmw_app.helper.ApiConfig
 import com.g_mix.gmw_app.helper.Constant
 import com.google.gson.Gson
+import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
 import java.util.ArrayList
@@ -48,8 +52,9 @@ class MyOrderFragment : Fragment() {
         }
 
 
-        myOrderAdapter = MyOrderAdapter(activity, orderData)
-        binding.lvOrderData.adapter = myOrderAdapter
+        val linearLayoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
+        binding.lvOrderData.layoutManager = linearLayoutManager
+
 
         loadOrderList()
 
@@ -57,65 +62,48 @@ class MyOrderFragment : Fragment() {
     }
 
     private fun loadOrderList() {
-        if (isLoading) return
-        isLoading = true
+        val params: MutableMap<String, String> = HashMap()
+        params[Constant.USER_ID] = session.getData(Constant.USER_ID) // Or another parameter based on your API
 
-        val params = buildProfileParams()
-        ApiConfig.RequestToVolley({ result, response ->
-            handleProfileResponse(result, response)
-        }, activity, Constant.ORDERS_LIST, params, true, 1)
+        activity?.let {
+            ApiConfig.RequestToVolley({ result, response ->
+                if (result) {
+                    try {
+                        val jsonObject = JSONObject(response)
+                        if (jsonObject.getBoolean(Constant.SUCCESS)) {
+                            val jsonArray: JSONArray = jsonObject.getJSONArray(Constant.DATA)
+                            val g = Gson()
+                            val orderData: ArrayList<OrderData> = ArrayList()
 
-        Log.d("ORDERS_LIST", "ORDERS_LIST: " + Constant.ORDERS_LIST)
-        Log.d("ORDERS_LIST", "ORDERS_LISTparams: " + params)
-    }
+                            // Limiting to the first five items
+                            val limit = minOf(jsonArray.length(), 5)
+                            for (i in 0 until limit) {
+                                val jsonObject1 = jsonArray.getJSONObject(i)
+                                val address: OrderData = g.fromJson(jsonObject1.toString(), OrderData::class.java)
+                                orderData.add(address)
+                            }
 
-    private fun buildProfileParams(): HashMap<String, String> {
-        return hashMapOf(
-            Constant.USER_ID to session.getData(Constant.USER_ID),
-//            Constant.OFFSET to offset.toString(),
-//            Constant.LIMIT to limit.toString(),
-        )
-    }
+                            // Pass the Activity and addressList to the adapter
+                            val adapter = MyOrderAdapter(requireActivity(), requireActivity().supportFragmentManager, orderData) { selectedAddress ->
+                                // When an address is selected, store its details for passing later
 
-    private fun handleProfileResponse(result: Boolean, response: String) {
-        isLoading = false
+                            }
+                            binding.lvOrderData.adapter = adapter
 
-        if (result) {
-            try {
-                val jsonObject = JSONObject(response)
-                if (jsonObject.getBoolean(Constant.SUCCESS)) {
-                    updateProfileList(jsonObject)
-                } else {
-                    showProfileListError(jsonObject.getString(Constant.MESSAGE))
+                        } else {
+                            // Handle error
+                        }
+                    } catch (e: JSONException) {
+                        e.printStackTrace()
+                        Toast.makeText(activity, e.toString(), Toast.LENGTH_SHORT).show()
+                    }
                 }
-            } catch (e: JSONException) {
-                e.printStackTrace()
-            }
+            }, it, Constant.ORDERS_LIST, params, true)
         }
     }
 
-    private fun showProfileListError(message: String) {
-        binding.lvOrderData.visibility = View.GONE
-        Toast.makeText(activity, message, Toast.LENGTH_SHORT).show()
-    }
 
-    private fun updateProfileList(jsonObject: JSONObject) {
-        binding.lvOrderData.visibility = View.VISIBLE
 
-        val jsonArray = jsonObject.getJSONArray(Constant.DATA)
-        val gson = Gson()
-
-        orderData.clear()
-
-        for (i in 0 until jsonArray.length()) {
-            val orderProduct = gson.fromJson(jsonArray.getJSONObject(i).toString(), OrderData::class.java)
-            Log.d("OrderData", "Loaded Order: $orderProduct") // Log order data
-            orderData.add(orderProduct)
-        }
-
-        myOrderAdapter.notifyDataSetChanged()
-        Log.d("HomeFragment", "Loaded Orders: ${orderData.size}")
-    }
 
 }
 

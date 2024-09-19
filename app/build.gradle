@@ -122,5 +122,10 @@ dependencies {
     implementation 'com.hbb20:ccp:2.6.1'
 
 
+    implementation 'androidx.viewpager2:viewpager2:1.0.0'
+
+    implementation "com.google.android.exoplayer:exoplayer:2.18.4"
+
+
     // CameraX dependencies
 }

@@ -91,8 +91,6 @@ class MainActivity : BaseActivity(), NavigationBarView.OnItemSelectedListener {
                 Toast.makeText(this, "WhatsApp not installed.", Toast.LENGTH_SHORT).show()
             }
         }
-
-
     }
 
     private fun showLogoutConfirmationDialog() {
@@ -243,15 +241,12 @@ class MainActivity : BaseActivity(), NavigationBarView.OnItemSelectedListener {
                             val dataObject = jsonArray.getJSONObject(0)
                             val deliveryCharges = dataObject.getString("delivery_charges")
                             val customer_support_number = dataObject.getString("customer_support_number")
-
                             session.setData(Constant.DELIVERY_CHARGE, deliveryCharges)
                             session.setData(Constant.CUSTOMER_SUPPORT_NUMBER, customer_support_number)
-
-                            // Display the delivery charges in a toast
+                        // Display the delivery charges in a toast
                         }
                     } else {
-                        Toast.makeText(
-                            this,
+                        Toast.makeText(this,
                             jsonObject.getString(Constant.MESSAGE),
                             Toast.LENGTH_SHORT
                         ).show()

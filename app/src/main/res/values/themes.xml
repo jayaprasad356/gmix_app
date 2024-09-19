@@ -4,7 +4,7 @@
     <!-- Base theme for light mode -->
 
     <!-- Base theme for light mode -->
-    <style name="Theme.G_mix_app" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.G_mix_app" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="android:colorPrimary">@color/white</item>
 
         <item name="colorPrimaryVariant">@color/primary</item>
@@ -25,7 +25,7 @@
     </style>
 
     <!-- Theme for dark mode -->
-    <style name="Theme.G_mix_app.Dark" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.G_mix_app.Dark" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="android:colorPrimary">@color/white</item>
 
         <item name="colorPrimaryVariant">@color/primary</item>

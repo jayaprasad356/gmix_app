@@ -59,10 +59,15 @@ class MyProfileFragment : Fragment() {
             openRefundFragment()
         }
 
+        binding.rlJobs.setOnClickListener{
+            openJobsFragment()
+        }
 
 
         return binding.root
     }
+
+
 
     private fun openRefundFragment() {
         val fragmentManager = parentFragmentManager
@@ -73,6 +78,20 @@ class MyProfileFragment : Fragment() {
         transaction.replace(R.id.fragment_container, RefundFragment)
         transaction.addToBackStack(null) // Optional: Add to backstack to allow going back
         transaction.commit()
+    }
+
+    private fun openJobsFragment() {
+
+        val fragmentManager = parentFragmentManager
+        val transaction = fragmentManager.beginTransaction()
+        val jobsFragment = JobFragment()
+
+        // Replace current fragment with MyOrderFragment
+        transaction.replace(R.id.fragment_container, jobsFragment)
+        transaction.addToBackStack(null) // Optional: Add to backstack to allow going back
+        transaction.commit()
+
+
     }
 
 

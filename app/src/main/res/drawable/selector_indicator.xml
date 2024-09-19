@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Selected state -->
+    <item android:state_selected="true">
+        <layer-list>
+            <item android:left="4dp" android:right="4dp" android:top="4dp" android:bottom="4dp">
+                <shape android:shape="oval">
+                    <size android:width="8dp" android:height="8dp" />
+                    <solid android:color="@color/selectedDotColor" />
+                </shape>
+            </item>
+        </layer-list>
+    </item>
+
+    <!-- Unselected state -->
+    <item android:state_selected="false">
+        <layer-list>
+            <item android:left="4dp" android:right="4dp" android:top="4dp" android:bottom="4dp">
+                <shape android:shape="oval">
+                    <size android:width="8dp" android:height="8dp" />
+                    <solid android:color="@color/unselectedDotColor" />
+                </shape>
+            </item>
+        </layer-list>
+    </item>
+</selector>
+

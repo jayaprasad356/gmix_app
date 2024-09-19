@@ -2,8 +2,8 @@ package com.g_mix.gmw_app.helper
 
 object Constant {
     const val AppPlayStoreUrl: String = ""
-   const val MainBaseUrl: String = "https://gmix.graymatterworks.com/"
-   // const val MainBaseUrl: String = "https://testgmix.graymatterworks.com/"
+   //const val MainBaseUrl: String = "https://gmix.graymatterworks.com/"
+    const val MainBaseUrl: String = "https://testgmix.graymatterworks.com/"
 
     const val BaseUrl: String = MainBaseUrl + "api/"
 
@@ -11,9 +11,12 @@ object Constant {
     const val LOGIN: String = BaseUrl + "login"
     const val OTP: String = BaseUrl + "otp"
     const val USERDETAILS: String = BaseUrl + "userdetails"
+    const val UPDATE_RESELLS: String = BaseUrl + "update_resells"
     const val ADD_ADDRESS: String = BaseUrl + "add_address"
     const val PRODUCT_LIST: String = BaseUrl + "product_list"
     const val ORDERS_LIST: String = BaseUrl + "orders_list"
+    const val UPDATE_REVIEWS: String = BaseUrl + "update_reviews"
+    const val UPDATE_RATINGS: String = BaseUrl + "update_ratings"
     const val REWARD_LIST: String = BaseUrl + "reward_product_list"
     const val PLACE_ORDER: String = BaseUrl + "place_order"
     const val MY_ADDRESS_LIST: String = BaseUrl + "my_address_list"
@@ -46,6 +49,16 @@ object Constant {
     const val TOTAL: String = "total"
     const val OFFSET: String = "offset"
     const val MOBILE: String = "mobile"
+    const val PLACE: String = "place"
+    const val QUALIFICATION: String = "qualification"
+    const val EXPERIENCE: String = "experience"
+    const val AGE: String = "age"
+    const val GENDER: String = "gender"
+    const val REVIEWS: String = "reviews"
+    const val RATINGS: String = "ratings"
+    const val ORDER_ID: String = "order_id"
+
+
     const val IS_LOGIN: String = "is_login"
     const val PRICE: String = "price"
     const val PAYMENT_MODE: String = "payment_mode"

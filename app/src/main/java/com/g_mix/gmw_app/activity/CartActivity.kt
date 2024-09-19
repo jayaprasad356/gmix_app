@@ -37,7 +37,7 @@ import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
 
-class CartActivity : AppCompatActivity() {
+class CartActivity : BaseActivity() {
 
     lateinit var binding: ActivityCartBinding
     lateinit var activity: Activity

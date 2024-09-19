@@ -4,6 +4,8 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.webkit.WebView
+import android.widget.Button
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -19,12 +21,15 @@ import com.g_mix.gmw_app.databinding.ActivityProductDetailsBinding
 import com.g_mix.gmw_app.helper.ApiConfig
 import com.g_mix.gmw_app.helper.Constant
 import com.g_mix.gmw_app.helper.Session
+import com.google.android.exoplayer2.ExoPlayer
+import com.google.android.exoplayer2.MediaItem
+import com.google.android.exoplayer2.ui.PlayerView
 import com.google.gson.Gson
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
 
-class ProductDetailsActivity : AppCompatActivity() {
+class ProductDetailsActivity : BaseActivity() {
 
     lateinit var binding: ActivityProductDetailsBinding
     lateinit var activity: Activity
@@ -106,6 +111,38 @@ class ProductDetailsActivity : AppCompatActivity() {
             intent.putExtra("ITEM_DESCRIPTION", itemDescription)
             startActivity(intent)
 
+        }
+
+
+        binding.ivPlaybtn.setOnClickListener {
+            // Inflate the custom dialog layout
+            val dialogView = layoutInflater.inflate(R.layout.dialog_video_player, null)
+
+            // Create a dialog
+            val dialog = android.app.Dialog(this)
+            dialog.setContentView(dialogView)
+
+            // Set up ExoPlayer
+            val playerView = dialogView.findViewById<PlayerView>(R.id.playerView)
+            val btnClose = dialogView.findViewById<Button>(R.id.btnClose)
+
+            val exoPlayer = ExoPlayer.Builder(this).build()
+            playerView.player = exoPlayer
+
+            val videoUrl = "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4" // Replace with your video URL
+            val mediaItem = MediaItem.fromUri(videoUrl)
+            exoPlayer.setMediaItem(mediaItem)
+            exoPlayer.prepare()
+            exoPlayer.playWhenReady = true
+
+            // Close button
+            btnClose.setOnClickListener {
+                exoPlayer.release()
+                dialog.dismiss()
+            }
+
+            // Show the dialog
+            dialog.show()
         }
 
         review()

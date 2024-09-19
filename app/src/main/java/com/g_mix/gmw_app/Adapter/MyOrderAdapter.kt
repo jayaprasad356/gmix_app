@@ -45,6 +45,12 @@ class MyOrderAdapter(
         holder.tvQuantityVal.text = "${order.quantity}"
         holder.tvPrice.text = "₹ ${order.total_price}"
         holder.tvDeliveryStatus.text = order.status
+        holder.ratingBar.rating = order.ratings!!.toFloat()
+
+        if(order.status == "Wait For Confirmation"){
+            holder.ratingBar.visibility = View.GONE
+            holder.tvReview.visibility = View.GONE
+        }
 
         val statusColor = Color.parseColor(order.status_color ?: "#000000") // Default to black if null
         holder.tvDeliveryStatus.setTextColor(statusColor)

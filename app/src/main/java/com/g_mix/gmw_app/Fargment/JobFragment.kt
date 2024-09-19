@@ -1,10 +1,13 @@
 package com.g_mix.gmw_app.Fargment
 
+import android.R
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import com.g_mix.gmw_app.activity.MainActivity
 import com.g_mix.gmw_app.databinding.FragmentJobBinding
@@ -28,13 +31,34 @@ class JobFragment : Fragment() {
         binding = FragmentJobBinding.inflate(inflater, container, false)
         session = Session(requireActivity())
 
+        val genderOptions = listOf("Select Gender", "male", "female", "other")
+        val adapter = ArrayAdapter(requireActivity(), R.layout.simple_spinner_item, genderOptions)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        binding.spinnerGender.adapter = adapter
 
         (activity as MainActivity).binding.rltoolbar.visibility = View.GONE
         (activity as MainActivity).binding.bottomNavigationView.visibility = View.GONE
         (activity as MainActivity).binding.fabWhatsapp.visibility = View.GONE
 
+        var gender = ""
+
         binding.ivBack.setOnClickListener {
             requireActivity().onBackPressed()
+        }
+
+        binding.spinnerGender.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                val selectedGender = genderOptions[position]
+                if(selectedGender != "Select Gender"){
+                    gender = selectedGender
+                } else {
+                    Toast.makeText(activity, "Please select Gender", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                Toast.makeText(activity, "Please select Gender", Toast.LENGTH_SHORT).show()
+            }
         }
 
 
@@ -46,7 +70,7 @@ class JobFragment : Fragment() {
             val qualification = binding.etQualification.text.toString()
             val experience = binding.etExperience.text.toString()
             val age = binding.etAge.text.toString()
-            val gender = binding.etGender.text.toString()
+//            val gender = binding.etGender.text.toString()
 
             if (validateInputs(name,mobile,place,qualification,experience,age,gender)){
                 resell(name,mobile,place,qualification,experience,age,gender)
@@ -146,7 +170,7 @@ class JobFragment : Fragment() {
             return false
         }
         if (gender.isEmpty()) {
-            Toast.makeText(activity, "Please enter Gender", Toast.LENGTH_SHORT).show()
+            Toast.makeText(activity, "Please select Gender", Toast.LENGTH_SHORT).show()
             return false
         }
 

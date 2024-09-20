@@ -52,18 +52,17 @@ class JobFragment : Fragment() {
                 if(selectedGender != "Select Gender"){
                     gender = selectedGender
                 } else {
-                    Toast.makeText(activity, "Please select Gender", Toast.LENGTH_SHORT).show()
+                 //   Toast.makeText(activity, "Please select Gender", Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
-                Toast.makeText(activity, "Please select Gender", Toast.LENGTH_SHORT).show()
             }
+
         }
 
 
         binding.btnSubmit.setOnClickListener {
-
             val name = binding.etName.text.toString()
             val mobile = binding.etMobileNumber.text.toString()
             val place = binding.etPlace.text.toString()

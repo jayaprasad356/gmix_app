@@ -28,7 +28,7 @@
             android:layout_toRightOf="@+id/ivBack"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="join part time job"
+            android:text="Join part time job"
             android:textSize="@dimen/_14sdp"
             android:gravity="center"
             android:textColor="?attr/myTextColor"
@@ -337,6 +337,7 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:paddingVertical="@dimen/_10sdp"
                     android:paddingHorizontal="@dimen/_10sdp">
 
                     <ImageView

@@ -1,4 +1,4 @@
-package com.g_mix.gmw_app.Fragment
+package com.g_mix.gmw_app.Fargment
 
 import android.app.Activity
 import android.os.Bundle

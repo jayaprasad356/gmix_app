@@ -2,13 +2,23 @@ package com.g_mix.gmw_app.activity
 
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
 import android.content.Intent
+import android.graphics.BitmapFactory
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.RadioButton
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
+import com.canhub.cropper.CropImage
+import com.canhub.cropper.CropImageView
 import com.g_mix.gmw_app.R
 import com.g_mix.gmw_app.databinding.ActivityPaymentBinding
 import com.g_mix.gmw_app.helper.ApiConfig
@@ -16,6 +26,7 @@ import com.g_mix.gmw_app.helper.Constant
 import com.g_mix.gmw_app.helper.Session
 import org.json.JSONException
 import org.json.JSONObject
+import java.io.File
 import java.util.HashMap
 
 class PaymentActivity : BaseActivity() {
@@ -32,6 +43,11 @@ class PaymentActivity : BaseActivity() {
     private var itemPrice: Double = 0.0
     private var addressId: String? = null
     private var productId: String? = null
+
+    private val REQUEST_IMAGE_GALLERY = 2
+
+    var imageUri: Uri? = null
+    var filePath1: String? = null
 
 
     @SuppressLint("SetTextI18n")
@@ -113,12 +129,33 @@ class PaymentActivity : BaseActivity() {
             }
             else if (rdbSelectCashOn.isChecked) {
                 selectedPaymentMode = "COD"
+                binding.llScreenUploding.visibility = View.GONE
 
             }
             else {
                 Toast.makeText(activity, "Please select your payment method.", Toast.LENGTH_SHORT)
                     .show()
             }
+        }
+
+        binding.btnUploadScreenshots.setOnClickListener {
+            pickImageFromGallery()
+        }
+
+        binding.btnCopyUpi.setOnClickListener {
+            copyUpiIdToClipboard()
+        }
+    }
+
+    private fun copyUpiIdToClipboard() {
+        val upiId = binding.tvUpiId.text.toString()
+        if (upiId.isNotEmpty()) {
+            val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+            val clip = ClipData.newPlainText("UPI ID", upiId)
+            clipboard.setPrimaryClip(clip)
+            Toast.makeText(this, "UPI ID copied to clipboard", Toast.LENGTH_SHORT).show()
+        } else {
+            Toast.makeText(this, "UPI ID is empty", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -194,8 +231,38 @@ class PaymentActivity : BaseActivity() {
         }
     }
 
+    private fun pickImageFromGallery() {
+        val intent = Intent()
+        intent.type = "image/*"
+        intent.action = Intent.ACTION_GET_CONTENT
+        startActivityForResult(
+            Intent.createChooser(intent, "Select Picture"), REQUEST_IMAGE_GALLERY
+        )
+    }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == AppCompatActivity.RESULT_OK) {
+            if (requestCode == REQUEST_IMAGE_GALLERY) {
+                imageUri = data?.data
+                CropImage.activity(imageUri)
+                    .setCropShape(CropImageView.CropShape.RECTANGLE)
+                    .start(this)
 
+            } else if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
+                val result: CropImage.ActivityResult? = CropImage.getActivityResult(data)
+                if (result != null) {
+                    filePath1 = result.getUriFilePath(activity, true)
+                    val imgFile = File(filePath1)
+                    if (imgFile.exists()) {
+                        val myBitmap = BitmapFactory.decodeFile(imgFile.absolutePath)
+                        binding.btnUploadScreenshots.text = getString(R.string.screenshot_uploaded)
+                        binding.btnUploadScreenshots.setTextColor(ContextCompat.getColor(this, R.color.darkGreen))
+                    }
+                }
+            }
+        }
+    }
 
 
 

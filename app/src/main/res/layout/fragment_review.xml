@@ -35,22 +35,46 @@
             android:textSize="@dimen/_14sdp"
             />
 
-
-
-
     </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tvRating"
+        android:layout_below="@+id/rlToolbar"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/give_a_rating"
+        android:textSize="@dimen/_12sdp"
+        android:textColor="?attr/textgrey"
+        android:fontFamily="@font/poppins_regular"/>
+
+    <RatingBar
+        android:id="@+id/ratingBar"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:layout_below="@+id/tvRating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:numStars="5"
+        android:stepSize="1"
+        android:rating="0"
+        android:isIndicator="false"
+        android:progressTint="@color/yellow"
+        android:progressBackgroundTint="@color/grey"
+        style="@android:style/Widget.Holo.Light.RatingBar.Indicator"/>
 
 
 
     <EditText
         android:padding="@dimen/_5sdp"
         android:layout_margin="@dimen/_10sdp"
-        android:layout_below="@+id/rlToolbar"
+        android:layout_below="@+id/ratingBar"
         android:id="@+id/etReview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/edit_text_otp"
-        android:hint="Write a review.."
+        android:hint="@string/write_a_review"
         android:textColor="@color/black"
         android:fontFamily="@font/poppins_regular"
         android:textAlignment="textStart"

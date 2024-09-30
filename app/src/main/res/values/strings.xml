@@ -59,6 +59,8 @@
     <string name="first_name">First Name</string>
     <string name="last_name">Last Name (optional)</string>
     <string name="refund_policy">Refund Policy</string>
+    <string name="give_a_rating">Give a rating</string>
+    <string name="write_a_review">Write a review..</string>
 
 
 </resources>

@@ -72,6 +72,8 @@ class MyOrderAdapter(
             // Create a Bundle to pass data
             val bundle = Bundle()
             bundle.putString("order_id", order.id.toString()) // Pass the order ID or any other data
+            bundle.putString("ratings", order.ratings.toString()) // Pass the ratings or any other data
+            bundle.putString("reviews", order.reviews.toString()) // Pass the reviews or any other data
 
             // Set the bundle to the fragment
             reviewFragment.arguments = bundle
@@ -82,12 +84,12 @@ class MyOrderAdapter(
             transaction.commit()
         }
 
-        holder.ratingBar.setOnRatingBarChangeListener { _, rating, _ ->
-            val ratingValue = rating.toInt()
-
-            rating(ratingValue, order.id)
-
-        }
+//        holder.ratingBar.setOnRatingBarChangeListener { _, rating, _ ->
+//            val ratingValue = rating.toInt()
+//
+//            rating(ratingValue, order.id)
+//
+//        }
 
     }
 
@@ -109,31 +111,31 @@ class MyOrderAdapter(
     }
 
 
-    private fun rating(ratingValue: Int, id: Int?) {
-        val params: MutableMap<String, String> = HashMap()
-        params[Constant.USER_ID] = session.getData(Constant.USER_ID)
-        params[Constant.ORDER_ID] = id.toString()
-        params[Constant.RATINGS] = ratingValue.toString()
-        activity?.let {
-            ApiConfig.RequestToVolley({ result, response ->
-                if (result) {
-                    try {
-                        val jsonObject = JSONObject(response)
-                        if (jsonObject.getBoolean(Constant.SUCCESS)) {
-                            Toast.makeText(activity, jsonObject.getString(Constant.MESSAGE), Toast.LENGTH_SHORT).show()
-
-                        } else {
-                            Toast.makeText(activity, jsonObject.getString(Constant.MESSAGE), Toast.LENGTH_SHORT).show()
-                            // Handle error
-                        }
-                    } catch (e: JSONException) {
-                        e.printStackTrace()
-                        Toast.makeText(activity, e.toString(), Toast.LENGTH_SHORT).show()
-                    }
-                }
-            }, it, Constant.UPDATE_RATINGS, params, true)
-        }
-    }
+//    private fun rating(ratingValue: Int, id: Int?) {
+//        val params: MutableMap<String, String> = HashMap()
+//        params[Constant.USER_ID] = session.getData(Constant.USER_ID)
+//        params[Constant.ORDER_ID] = id.toString()
+//        params[Constant.RATINGS] = ratingValue.toString()
+//        activity?.let {
+//            ApiConfig.RequestToVolley({ result, response ->
+//                if (result) {
+//                    try {
+//                        val jsonObject = JSONObject(response)
+//                        if (jsonObject.getBoolean(Constant.SUCCESS)) {
+//                            Toast.makeText(activity, jsonObject.getString(Constant.MESSAGE), Toast.LENGTH_SHORT).show()
+//
+//                        } else {
+//                            Toast.makeText(activity, jsonObject.getString(Constant.MESSAGE), Toast.LENGTH_SHORT).show()
+//                            // Handle error
+//                        }
+//                    } catch (e: JSONException) {
+//                        e.printStackTrace()
+//                        Toast.makeText(activity, e.toString(), Toast.LENGTH_SHORT).show()
+//                    }
+//                }
+//            }, it, Constant.UPDATE_RATINGS, params, true)
+//        }
+//    }
 
 
 

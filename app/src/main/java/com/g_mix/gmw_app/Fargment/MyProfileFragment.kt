@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
-import com.g_mix.gmw_app.Fragment.MyOrderFragment
 import com.g_mix.gmw_app.R
 import com.g_mix.gmw_app.activity.MainActivity
 import com.g_mix.gmw_app.databinding.FragmentMyProfileBinding

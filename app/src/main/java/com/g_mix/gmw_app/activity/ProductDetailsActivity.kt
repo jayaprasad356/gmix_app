@@ -57,6 +57,10 @@ class ProductDetailsActivity : BaseActivity() {
 
         binding.tvRatings.text = itemRatings
 
+        binding.ivBack.setOnClickListener {
+            activity!!.onBackPressed()
+        }
+
 
         binding.wvDiscription.loadData(itemDescription ?: "", "text/html", "UTF-8")
 

@@ -65,6 +65,8 @@ object Constant {
     const val QUANTITY: String = "quantity"
     const val DELIVERY_CHARGE: String = "delivery_charges"
     const val CUSTOMER_SUPPORT_NUMBER: String = "customer_support_number"
+    const val UPI_ID: String = "upi_id"
+    const val PAYMENT_IMAGE: String = "payment_image"
     const val FROM: String = "from"
     const val SUCCESS: String = "success"
     const val MESSAGE: String = "message"

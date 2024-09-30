@@ -12,9 +12,9 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentManager
 import com.g_mix.gmw_app.Fargment.MyProfileFragment
-import com.g_mix.gmw_app.Fragment.HomeFragment
-import com.g_mix.gmw_app.Fragment.MyOrderFragment
-import com.g_mix.gmw_app.Fragment.RewardFragment
+import com.g_mix.gmw_app.Fargment.HomeFragment
+import com.g_mix.gmw_app.Fargment.MyOrderFragment
+import com.g_mix.gmw_app.Fargment.RewardFragment
 import com.g_mix.gmw_app.R
 import com.g_mix.gmw_app.helper.Session
 import com.g_mix.gmw_app.databinding.ActivityMainBinding
@@ -241,8 +241,10 @@ class MainActivity : BaseActivity(), NavigationBarView.OnItemSelectedListener {
                             val dataObject = jsonArray.getJSONObject(0)
                             val deliveryCharges = dataObject.getString("delivery_charges")
                             val customer_support_number = dataObject.getString("customer_support_number")
+                            val upi_id = dataObject.getString("upi_id")
                             session.setData(Constant.DELIVERY_CHARGE, deliveryCharges)
                             session.setData(Constant.CUSTOMER_SUPPORT_NUMBER, customer_support_number)
+                            session.setData(Constant.UPI_ID, upi_id)
                         // Display the delivery charges in a toast
                         }
                     } else {

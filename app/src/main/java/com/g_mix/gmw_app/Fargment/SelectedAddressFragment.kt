@@ -1,6 +1,7 @@
 package com.g_mix.gmw_app.Fargment
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -37,6 +38,7 @@ class SelectedAddressFragment : Fragment() {
     private lateinit var mobile: String
     private lateinit var address: String
     private lateinit var addressId: String
+    private lateinit var addressSuccess: String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -74,31 +76,35 @@ class SelectedAddressFragment : Fragment() {
 
 
         binding.btnPayment.setOnClickListener {
-            val fm = requireActivity().supportFragmentManager
-            val transaction = fm.beginTransaction()
+            if (addressSuccess == "false") {
+                Toast.makeText(activity, "Please add address", Toast.LENGTH_SHORT).show()
+            } else {
+                val fm = requireActivity().supportFragmentManager
+                val transaction = fm.beginTransaction()
 
-            // Create a bundle to pass data
-            val bundle = Bundle().apply {
-                putString("PRODUCT_ID", productId)
-                putString("ITEM_NAME", itemName)
-                putString("ITEM_PRICE", itemPrice)
-                putString("ITEM_IMAGE", itemImage)
-                putString("ITEM_WEIGHT", itemWeight)
-                putString("NAME", name)
-                putString("MOBILE_NUMBER", mobile)
-                putString("ADDRESS", address)
-                putString("ADDRESS_ID", addressId)
+                // Create a bundle to pass data
+                val bundle = Bundle().apply {
+                    putString("PRODUCT_ID", productId)
+                    putString("ITEM_NAME", itemName)
+                    putString("ITEM_PRICE", itemPrice)
+                    putString("ITEM_IMAGE", itemImage)
+                    putString("ITEM_WEIGHT", itemWeight)
+                    putString("NAME", name)
+                    putString("MOBILE_NUMBER", mobile)
+                    putString("ADDRESS", address)
+                    putString("ADDRESS_ID", addressId)
+                }
+
+                // Create a new instance of PaymentFragment and set the bundle as its arguments
+                val paymentFragment = PaymentFragment().apply {
+                    arguments = bundle
+                }
+
+                // Replace the current fragment with PaymentFragment
+                transaction.replace(R.id.fragment_container, paymentFragment)
+                transaction.addToBackStack(null) // Optional: to add the transaction to the back stack
+                transaction.commit()
             }
-
-            // Create a new instance of PaymentFragment and set the bundle as its arguments
-            val paymentFragment = PaymentFragment().apply {
-                arguments = bundle
-            }
-
-            // Replace the current fragment with PaymentFragment
-            transaction.replace(R.id.fragment_container, paymentFragment)
-            transaction.addToBackStack(null) // Optional: to add the transaction to the back stack
-            transaction.commit()
         }
 
 
@@ -120,6 +126,7 @@ class SelectedAddressFragment : Fragment() {
                 if (result) {
                     try {
                         val jsonObject = JSONObject(response)
+                        addressSuccess = jsonObject.getBoolean(Constant.SUCCESS).toString()
                         if (jsonObject.getBoolean(Constant.SUCCESS)) {
                             val jsonArray: JSONArray = jsonObject.getJSONArray(Constant.DATA)
                             val g = Gson()

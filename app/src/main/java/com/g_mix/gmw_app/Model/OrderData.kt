@@ -20,6 +20,7 @@ class OrderData {
     var live_tracking: String? = null
     var total_price: String? = null
     var ratings: String? = null
+    var reviews: String? = null
 
     constructor(
         id: Int?,
@@ -40,7 +41,8 @@ class OrderData {
         status_color: String?,
         live_tracking: String?,
         total_price: String?,
-        ratings: String?
+        ratings: String?,
+        reviews: String?
     ) {
         this.id = id
         this.user_name = user_name
@@ -61,5 +63,6 @@ class OrderData {
         this.live_tracking = live_tracking
         this.total_price = total_price
         this.ratings = ratings
+        this.reviews = reviews
     }
 }

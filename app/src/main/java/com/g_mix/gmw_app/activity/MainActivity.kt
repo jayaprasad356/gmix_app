@@ -91,6 +91,27 @@ class MainActivity : BaseActivity(), NavigationBarView.OnItemSelectedListener {
                 Toast.makeText(this, "WhatsApp not installed.", Toast.LENGTH_SHORT).show()
             }
         }
+
+        handleDeepLink(intent)    }
+
+
+    private fun handleDeepLink(intent: Intent?) {
+        val action = intent?.action
+        val data: Uri? = intent?.data
+
+        if (Intent.ACTION_VIEW == action && data != null) {
+            // Extract the user ID and chat ID from the query parameters
+
+            val fragmentManager = supportFragmentManager
+            val transaction = fragmentManager.beginTransaction()
+            val myOrderFragment = MyOrderFragment()
+
+            // Replace current fragment with MyOrderFragment
+            transaction.replace(R.id.fragment_container, myOrderFragment)
+            transaction.addToBackStack(null) // Optional: Add to backstack to allow going back
+            transaction.commit()
+
+        }
     }
 
     private fun showLogoutConfirmationDialog() {

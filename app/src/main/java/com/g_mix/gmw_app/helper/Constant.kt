@@ -1,11 +1,13 @@
 package com.g_mix.gmw_app.helper
 
 object Constant {
-    const val AppPlayStoreUrl: String = ""
-   //const val MainBaseUrl: String = "https://gmix.graymatterworks.com/"
-    const val MainBaseUrl: String = "https://testgmix.graymatterworks.com/"
+ const val AppPlayStoreUrl: String = ""
+   const val MainBaseUrl: String = "https://gmix.graymatterworks.com/"
+    //const val MainBaseUrl: String = "https://testgmix.graymatterworks.com/"
+ const val PAYMENT_LINK: String = "https://gateway.graymatterworks.com/api/create_payment_request.php"
 
-    const val BaseUrl: String = MainBaseUrl + "api/"
+
+ const val BaseUrl: String = MainBaseUrl + "api/"
 
 
     const val LOGIN: String = BaseUrl + "login"

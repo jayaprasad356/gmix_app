@@ -13,8 +13,8 @@ android {
         applicationId "com.g_mix.gmw_app"
         minSdk 24
         targetSdk 34
-        versionCode 6
-        versionName "6.0"
+        versionCode 7
+        versionName "7.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
             useSupportLibrary true
@@ -125,6 +125,10 @@ dependencies {
     implementation 'androidx.viewpager2:viewpager2:1.0.0'
 
     implementation "com.google.android.exoplayer:exoplayer:2.18.4"
+
+    implementation 'com.github.delight-im:Android-AdvancedWebView:v3.2.1'
+
+    implementation("com.google.androidbrowserhelper:androidbrowserhelper:2.5.0")
 
 
     // CameraX dependencies

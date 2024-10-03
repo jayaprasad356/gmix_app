@@ -1,5 +1,5 @@
 [versions]
-agp = "8.4.1"
+agp = "8.4.2"
 constraintlayoutVersion = "1.1.3"
 firebaseMlVision = "24.1.0"
 firebaseMlVisionFaceModel = "20.0.2"
@@ -16,7 +16,7 @@ appcompat = "1.7.0"
 material = "1.12.0"
 activity = "1.9.1"
 constraintlayout = "2.1.4"
-googleGmsGoogleServices = "4.4.1"
+googleGmsGoogleServices = "4.4.2"
 firebaseAnalytics = "22.0.0"
 billingKtx = "7.0.0"
 

@@ -32,7 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/_5sdp"
             android:fontFamily="@font/poppins_medium"
-            android:text="Create New"
+            android:text="Add Address"
             android:layout_alignParentEnd="true"
             android:textColor="@color/white"
             android:background="@drawable/round_circle"

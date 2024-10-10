@@ -2,8 +2,8 @@ package com.g_mix.gmw_app.helper
 
 object Constant {
  const val AppPlayStoreUrl: String = ""
-   const val MainBaseUrl: String = "https://gmix.graymatterworks.com/"
-    //const val MainBaseUrl: String = "https://testgmix.graymatterworks.com/"
+//   const val MainBaseUrl: String = "https://gmix.graymatterworks.com/"
+    const val MainBaseUrl: String = "https://testgmix.graymatterworks.com/"
  const val PAYMENT_LINK: String = "https://gateway.graymatterworks.com/api/create_payment_request.php"
 
 
@@ -31,6 +31,8 @@ object Constant {
     const val PRIVACY_POLICY: String = BaseUrl + "privacy_policy"
     const val REFUND_POLICY: String = BaseUrl + "refund_policy"
     const val TERMS_CONDITION: String = BaseUrl + "terms_conditions"
+    const val IMAGE_SLIDERS: String = BaseUrl + "image_sliders"
+    const val CATEGORY_PRODUCT_LIST: String = BaseUrl + "category_product_list"
     val APPUPDATE: String = BaseUrl + "appsettings_list"
 
 
@@ -43,6 +45,7 @@ object Constant {
     const val AUTHORIZATION: String = "Authorization"
     const val TOKEN: String = "token"
     const val USER_ID: String = "user_id"
+    const val CATEGORY_ID: String = "category_id"
     const val PRODUCT_ID: String = "product_id"
     const val ADDRESS_ID: String = "address_id"
     const val ID: String = "id"

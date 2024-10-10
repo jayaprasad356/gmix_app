@@ -11,6 +11,7 @@ import android.view.MenuItem
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentManager
+import com.g_mix.gmw_app.Fargment.CategoryFragment
 import com.g_mix.gmw_app.Fargment.MyProfileFragment
 import com.g_mix.gmw_app.Fargment.HomeFragment
 import com.g_mix.gmw_app.Fargment.MyOrderFragment
@@ -47,6 +48,7 @@ class MainActivity : BaseActivity(), NavigationBarView.OnItemSelectedListener {
     private val myOrderFragment = MyOrderFragment()
     private val rewardFragment = RewardFragment()
     private val myProfileFragment = MyProfileFragment()
+    private val categoryFragment = CategoryFragment()
 
     private lateinit var mFusedLocationClient: FusedLocationProviderClient
     val ONESIGNAL_APP_ID = "a36f8a79-e68f-47f1-bdda-e720b95c8652"
@@ -166,6 +168,7 @@ class MainActivity : BaseActivity(), NavigationBarView.OnItemSelectedListener {
         bottomNavigationView.menu.findItem(R.id.navMyOrder).setIcon(R.drawable.nav_my_product)
         bottomNavigationView.menu.findItem(R.id.navReward).setIcon(R.drawable.outline_reward_ic)
         bottomNavigationView.menu.findItem(R.id.navMyProfile).setIcon(R.drawable.outline_profile)
+        bottomNavigationView.menu.findItem(R.id.navCategory).setIcon(R.drawable.outlined_category)
 
         // Handle navigation and set selected icon
         when (item.itemId) {
@@ -180,6 +183,10 @@ class MainActivity : BaseActivity(), NavigationBarView.OnItemSelectedListener {
             R.id.navMyOrder -> {
                 transaction.replace(R.id.fragment_container, myOrderFragment)
                 item.setIcon(R.drawable.nav_select_my_oreder)
+            }
+            R.id.navCategory -> {
+                transaction.replace(R.id.fragment_container, categoryFragment)
+                item.setIcon(R.drawable.filled_category)
             }
             R.id.navMyProfile -> {
                 transaction.replace(R.id.fragment_container, myProfileFragment)

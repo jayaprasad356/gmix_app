@@ -1,37 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_margin="@dimen/_5sdp">
 
-
-    <TextView
-        android:id="@+id/tvTitle"
-        android:layout_width="0dp"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:layout_marginBottom="@dimen/_5sdp"
-        android:layout_marginHorizontal="@dimen/_5sdp"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardView"
+        app:cardElevation="0dp"
+        app:cardCornerRadius="@dimen/_10sdp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/abc_juice_powder"
-        android:textSize="@dimen/_14sdp"
-        android:textColor="?attr/myTextColor"
-        android:gravity="start"
-        android:fontFamily="@font/poppins_medium"
-        tools:ignore="MissingConstraints" />
+        android:layout_marginHorizontal="@dimen/_5sdp">
 
-    <GridView
-        android:id="@+id/gridView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:numColumns="2"
-        android:verticalSpacing="@dimen/_5sdp"
-        android:horizontalSpacing="@dimen/_5sdp"
-        app:layout_constraintTop_toBottomOf="@id/tvTitle"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/sliderRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="200dp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <LinearLayout
+        android:id="@+id/llIndicatorLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/cardView"
+    android:layout_marginTop="@dimen/_10sdp"
+    android:gravity="center"
+    tools:ignore="MissingConstraints">
+
+    <LinearLayout
+        android:id="@+id/indicatorLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        tools:ignore="MissingConstraints"/>
+</LinearLayout>
+
+<TextView
+android:id="@+id/tvTitle"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_below="@id/llIndicatorLayout"
+    android:layout_marginTop="@dimen/_10sdp"
+    android:layout_marginBottom="@dimen/_5sdp"
+    android:layout_marginHorizontal="@dimen/_5sdp"
+    android:text="@string/abc_juice_powder"
+    android:textSize="@dimen/_14sdp"
+    android:textColor="?attr/myTextColor"
+    android:gravity="start"
+    android:fontFamily="@font/poppins_medium"
+    tools:ignore="MissingConstraints" />
+
+<GridView
+android:id="@+id/gridView"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:numColumns="2"
+android:verticalSpacing="@dimen/_5sdp"
+android:horizontalSpacing="@dimen/_5sdp"
+android:layout_below="@id/tvTitle"
+    android:layout_alignParentBottom="true"
+    tools:ignore="MissingConstraints"/>
+    </RelativeLayout>

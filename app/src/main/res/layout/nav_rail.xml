@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="@dimen/_77sdp"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:background="@color/white"
+        tools:ignore="UselessParent">
+
+    <LinearLayout
+        android:id="@+id/llJuice"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_75sdp"
+        android:orientation="vertical"
+        android:padding="@dimen/_5sdp"
+        android:clickable="true"
+        android:focusable="true"
+        tools:ignore="UseCompoundDrawables"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:layout_width="@dimen/_35sdp"
+            android:layout_height="@dimen/_35sdp"
+            android:scaleType="fitXY"
+            tools:ignore="ContentDescription"
+            android:src="@drawable/juice_im"
+            android:layout_gravity="center_horizontal" />
+
+        <TextView
+            android:id="@+id/tvJuice"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:textAlignment="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Juice"
+            android:textColor="@android:color/black"
+            tools:ignore="HardcodedText" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llFaceMask"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_75sdp"
+        android:orientation="vertical"
+        android:padding="@dimen/_5sdp"
+        android:clickable="true"
+        android:focusable="true"
+        tools:ignore="UseCompoundDrawables"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:layout_width="@dimen/_35sdp"
+            android:layout_height="@dimen/_35sdp"
+            android:scaleType="fitXY"
+            tools:ignore="ContentDescription"
+            android:src="@drawable/face_mask_im"
+            android:layout_gravity="center_horizontal" />
+
+        <TextView
+            android:id="@+id/tvFaceMask"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:textAlignment="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Face mask"
+            android:textColor="@android:color/black"
+            tools:ignore="HardcodedText" />
+    </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="@dimen/_2sdp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:ignore="UselessParent"
+        android:background="@color/primary"/>
+
+</LinearLayout>

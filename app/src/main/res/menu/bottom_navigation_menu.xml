@@ -20,6 +20,12 @@
 
 
     <item
+        android:id="@+id/navCategory"
+        android:icon="@drawable/outlined_category"
+        android:title="Category" />
+
+
+    <item
         android:id="@+id/navMyProfile"
         android:icon="@drawable/myprofile_ic"
         android:title="My Profile" />
